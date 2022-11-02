@@ -8,6 +8,9 @@ import {
   ScrollRestoration
 } from '@remix-run/react';
 import styles from '~/styles/tailwind.css';
+import { inject } from '@vercel/analytics';
+
+inject();
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
