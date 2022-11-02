@@ -4,7 +4,7 @@ export default function Index() {
   return (
     <div className="bg-primary flex text-center text-alt flex-col gap-6 md:gap-10 px-2 items-center justify-center min-h-screen w-screen">
       <div className="space-y-4">
-        <h1 className="text-5xl text-alt font-serif">
+        <h1 className="text-4xl md:text-5xl text-alt font-serif">
           <span>Hi 👋🏾 i&apos;am </span>
           <span className="font-medium">Federico Minaya </span>
         </h1>
