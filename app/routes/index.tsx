@@ -6,7 +6,9 @@ export default function Index() {
       <div className="space-y-4">
         <h1 className="text-4xl md:text-5xl text-alt font-serif">
           <span>Hi 👋🏾 i&apos;am </span>
-          <span className="font-medium">Federico Minaya </span>
+          <span className="font-medium block md:inline-block">
+            Federico Minaya{' '}
+          </span>
         </h1>
 
         <h2 className="text-3xl font-medium font-serif">
