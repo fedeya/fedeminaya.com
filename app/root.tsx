@@ -58,7 +58,7 @@ export const links: LinksFunction = () => [
   },
   {
     rel: 'stylesheet',
-    href: 'https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500;700&display=swap'
+    href: 'https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500&display=swap'
   }
 ];
 
