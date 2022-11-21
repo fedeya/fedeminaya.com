@@ -8,6 +8,7 @@ import {
   ScrollRestoration
 } from '@remix-run/react';
 import styles from '~/styles/tailwind.css';
+import appStyles from '~/styles/app.css';
 import { inject } from '@vercel/analytics';
 
 inject();
@@ -31,6 +32,20 @@ export const meta: MetaFunction = () => ({
 
 export const links: LinksFunction = () => [
   {
+    rel: 'preload',
+    as: 'font',
+    href: '/fonts/roboto-slab-500.woff2',
+    type: 'font/woff2',
+    crossOrigin: 'anonymous'
+  },
+  {
+    rel: 'preload',
+    as: 'font',
+    href: '/fonts/roboto-slab-regular.woff2',
+    type: 'font/woff2',
+    crossOrigin: 'anonymous'
+  },
+  {
     rel: 'icon',
     type: 'image/png',
     href: '/favicon.png'
@@ -44,21 +59,8 @@ export const links: LinksFunction = () => [
     href: styles
   },
   {
-    rel: 'dns-prefetch',
-    href: 'https://fonts.googleapis.com'
-  },
-  {
-    rel: 'preconnect',
-    href: 'https://fonts.googleapis.com'
-  },
-  {
-    rel: 'preconnect',
-    href: 'https://fonts.gstatic.com',
-    crossOrigin: 'use-credentials'
-  },
-  {
     rel: 'stylesheet',
-    href: 'https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;500&display=swap'
+    href: appStyles
   }
 ];
 
