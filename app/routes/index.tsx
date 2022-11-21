@@ -19,6 +19,7 @@ export default function Index() {
       <div className="text-3xl flex gap-4">
         👉🏾
         <a
+          aria-label="Github"
           href="https://github.com/Fedeya"
           target="_blank"
           className="font-medium underline"
@@ -27,6 +28,7 @@ export default function Index() {
           <FaGithub />
         </a>
         <a
+          aria-label="Twitter"
           href="https://linkedin.com/in/federico-minaya"
           target="_blank"
           className="font-medium underline"
@@ -35,6 +37,7 @@ export default function Index() {
           <FaLinkedin />
         </a>
         <a
+          aria-label="Linkedin"
           href="https://twitter.com/fedeminaya"
           target="_blank"
           className="font-medium underline"
