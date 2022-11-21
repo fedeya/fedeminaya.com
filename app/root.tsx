@@ -44,13 +44,17 @@ export const links: LinksFunction = () => [
     href: styles
   },
   {
+    rel: 'dns-prefetch',
+    href: 'https://fonts.googleapis.com'
+  },
+  {
     rel: 'preconnect',
     href: 'https://fonts.googleapis.com'
   },
   {
     rel: 'preconnect',
     href: 'https://fonts.gstatic.com',
-    crossOrigin: 'anonymous'
+    crossOrigin: 'use-credentials'
   },
   {
     rel: 'stylesheet',
