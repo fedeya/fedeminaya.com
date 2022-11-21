@@ -15,6 +15,17 @@ inject();
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
   title: 'Federico Minaya',
+  description:
+    'Federico Minaya is a full stack developer with a passion for building web applications.',
+  'og:type': 'website',
+  'og:site_name': 'Federico Minaya',
+  'og:title': 'Federico Minaya',
+  'og:description':
+    'Federico Minaya is a full stack developer with a passion for building web applications.',
+  'og:url': 'https://fedeminaya.com',
+  'twitter:card': 'summary',
+  'twitter:site': '@fedeminaya',
+  'twitter:creator': '@fedeminaya',
   viewport: 'width=device-width,initial-scale=1'
 });
 
@@ -23,6 +34,10 @@ export const links: LinksFunction = () => [
     rel: 'icon',
     type: 'image/png',
     href: '/favicon.png'
+  },
+  {
+    rel: 'canonical',
+    href: 'https://fedeminaya.com'
   },
   {
     rel: 'stylesheet',
