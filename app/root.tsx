@@ -31,14 +31,21 @@ export const links: LinksFunction = () => [
   {
     rel: 'preload',
     as: 'font',
-    href: '/fonts/roboto-slab-500.woff2',
+    href: '/fonts/inter-v12-latin-regular.woff2',
     type: 'font/woff2',
     crossOrigin: 'anonymous'
   },
   {
     rel: 'preload',
     as: 'font',
-    href: '/fonts/roboto-slab-regular.woff2',
+    href: '/fonts/inter-v12-latin-500.woff2',
+    type: 'font/woff2',
+    crossOrigin: 'anonymous'
+  },
+  {
+    rel: 'preload',
+    as: 'font',
+    href: '/fonts/inter-v12-latin-600.woff2',
     type: 'font/woff2',
     crossOrigin: 'anonymous'
   },
@@ -68,7 +75,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="from-indigo-50 bg-gradient-to-br to-gray-200 min-h-screen via-white">
         <Outlet />
         <ScrollRestoration />
         <Scripts />

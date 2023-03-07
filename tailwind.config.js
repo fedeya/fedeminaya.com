@@ -4,11 +4,14 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        serif: ['Roboto Slab', 'serif']
+        sans: ['Inter', 'sans-serif']
       },
       colors: {
         primary: '#060c14',
         alt: '#1d90ff'
+      },
+      screens: {
+        xs: '475px'
       }
     }
   },
