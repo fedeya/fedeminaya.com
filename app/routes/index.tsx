@@ -98,7 +98,7 @@ export default function Index() {
         </a>
       </div>
 
-      <div className="pt-20" id="about">
+      <div className="pt-8 mt-12" id="about">
         <div className="flex gap-1 items-center">
           <span className="text-2xl">~</span>
           <h2 className="text-3xl font-semibold">About Me</h2>
@@ -192,7 +192,7 @@ export default function Index() {
         </div>
       </div>
 
-      <div className="pt-14" id="oss">
+      <div className="pt-8 mt-6" id="oss">
         <div className="flex gap-1 items-center">
           <span className="text-2xl">~</span>
           <h2 className="text-3xl font-semibold">OSS</h2>
