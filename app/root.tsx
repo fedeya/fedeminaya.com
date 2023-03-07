@@ -3,12 +3,12 @@ import {
   Links,
   LiveReload,
   Meta,
-  Outlet,
   Scripts,
   ScrollRestoration
 } from '@remix-run/react';
 import styles from '~/styles/tailwind.css';
 import appStyles from '~/styles/app.css';
+import Layout from './components/Layout';
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
@@ -70,13 +70,13 @@ export const links: LinksFunction = () => [
 
 export default function App() {
   return (
-    <html lang="en">
+    <html lang="en" className="scroll-smooth">
       <head>
         <Meta />
         <Links />
       </head>
       <body className="from-indigo-50 bg-gradient-to-br to-gray-200 min-h-screen via-white">
-        <Outlet />
+        <Layout />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />
