@@ -37,6 +37,7 @@ export default function Layout() {
               <button
                 className="rounded-md flex dark:border-gray-500 items-center gap-2 border-stone-500 p-2 shadow border"
                 type="submit"
+                aria-label="Toggle Dark Mode"
               >
                 {theme === 'dark' ? <FaSun /> : <FaMoon />}
               </button>
