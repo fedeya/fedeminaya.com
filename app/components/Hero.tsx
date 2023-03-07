@@ -28,7 +28,7 @@ export default function Hero() {
           aria-label="Linkedin"
           href="https://linkedin.com/in/federico-minaya"
           target="_blank"
-          className="border-stone-500 dark:border-gray-500 flex hover:bg-gray-100 transition ease-in items-center gap-2 border py-2 px-3 shadow rounded-md"
+          className="border-stone-500 dark:hover:bg-gray-800 dark:border-gray-500 flex hover:bg-gray-100 transition ease-in items-center gap-2 border py-2 px-3 shadow rounded-md"
           rel="noopener noreferrer"
         >
           <FaLinkedin />
@@ -40,7 +40,7 @@ export default function Hero() {
           aria-label="Twitter"
           href="https://twitter.com/fedeminaya"
           target="_blank"
-          className="border-stone-500 dark:border-gray-500 flex hover:bg-gray-100 transition ease-in items-center gap-2 border py-2 px-3 shadow rounded-md"
+          className="border-stone-500 dark:border-gray-500 dark:hover:bg-gray-800 flex hover:bg-gray-100 transition ease-in items-center gap-2 border py-2 px-3 shadow rounded-md"
           rel="noopener noreferrer"
         >
           <FaTwitter />
@@ -52,7 +52,7 @@ export default function Hero() {
           aria-label="Github"
           href="https://github.com/fedeya"
           target="_blank"
-          className="border-stone-500 dark:border-gray-500 flex hover:bg-gray-100 transition ease-in items-center gap-2 border py-2 px-3 shadow rounded-md"
+          className="border-stone-500 dark:border-gray-500 flex hover:bg-gray-100 dark:hover:bg-gray-800 transition ease-in items-center gap-2 border py-2 px-3 shadow rounded-md"
           rel="noopener noreferrer"
         >
           <FaGithub />

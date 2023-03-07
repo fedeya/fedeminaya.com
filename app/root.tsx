@@ -121,7 +121,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className="from-indigo-50 dark:from-zinc-900 dark:to-gray-900 bg-gradient-to-br to-gray-200 min-h-screen via-white">
+      <body className="from-indigo-50 dark:from-zinc-900 dark:to-gray-900 dark:via-gray-900 bg-gradient-to-br to-gray-200 min-h-screen via-white">
         <Layout />
         <ScrollRestoration />
         <Scripts />
