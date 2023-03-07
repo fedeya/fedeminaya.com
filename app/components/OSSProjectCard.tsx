@@ -31,7 +31,7 @@ const OSSProjectCard: FC<OSSProjectCardProps> = ({
           target="_blank"
           className="text-sm font-medium underline flex gap-1 mt-2 items-center"
         >
-          See more <HiOutlineArrowUpRight />
+          See more <HiOutlineArrowUpRight aria-label="External Link" />
         </Link>
       </div>
     </div>
