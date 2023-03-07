@@ -7,6 +7,7 @@ type ExperienceProps = {
   current?: boolean;
   image?: string;
   url: string;
+  time?: string;
   children: React.ReactNode;
 };
 
@@ -16,7 +17,8 @@ const Experience: FC<ExperienceProps> = ({
   current,
   children,
   image,
-  url
+  url,
+  time
 }) => {
   return (
     <div>
@@ -31,6 +33,7 @@ const Experience: FC<ExperienceProps> = ({
           )}
           <Link
             to={url}
+            rel="noopener noreferrer"
             target="_blank"
             className="text-xl font-medium underline"
           >
@@ -38,7 +41,9 @@ const Experience: FC<ExperienceProps> = ({
           </Link>
         </div>
 
-        {current && <p className="text-sm font-medium">Current</p>}
+        {(current || time) && (
+          <p className="text-sm font-medium">{time ?? 'Current'}</p>
+        )}
       </div>
 
       <p className="my-2">{children}</p>
@@ -79,6 +84,7 @@ export default function ExperienceSection() {
         <Experience
           title="Diseño Group"
           image="/images/dg-logo.png"
+          time="1y"
           url="https://www.dgroupsa.com.ar"
           technologies={[
             'TypeScript',
