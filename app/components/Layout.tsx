@@ -1,9 +1,12 @@
-import { Link, Outlet } from '@remix-run/react';
-import { FaHeart } from 'react-icons/fa';
+import { Link, Outlet, Form, useLoaderData } from '@remix-run/react';
+import { FaHeart, FaMoon, FaSun } from 'react-icons/fa';
+import { type loader } from '~/root';
 
 export default function Layout() {
+  const { theme } = useLoaderData<typeof loader>();
+
   return (
-    <div className="font-sans mx-auto sm:px-10 py-4 px-4 max-w-4xl">
+    <div className="font-sans dark:text-gray-200 mx-auto sm:px-10 py-4 px-4 max-w-4xl">
       <header className="mb-4">
         <nav className="flex justify-between items-center py-2">
           <ul className="flex items-center gap-2">
@@ -24,11 +27,20 @@ export default function Layout() {
             <Link
               to="https://github.com/sponsors/fedeya"
               target="_blank"
-              className="rounded-md flex items-center gap-2 text-xs border-stone-500 p-2 shadow border"
+              className="rounded-md flex dark:border-gray-500 items-center gap-2 text-xs border-stone-500 p-2 shadow border"
             >
               <FaHeart />
               <span>Sponsor</span>
             </Link>
+
+            <Form method="post">
+              <button
+                className="rounded-md flex dark:border-gray-500 items-center gap-2 border-stone-500 p-2 shadow border"
+                type="submit"
+              >
+                {theme === 'dark' ? <FaSun /> : <FaMoon />}
+              </button>
+            </Form>
           </div>
         </nav>
       </header>

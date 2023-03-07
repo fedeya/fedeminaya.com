@@ -1,14 +1,22 @@
-import type { LinksFunction, MetaFunction } from '@remix-run/cloudflare';
+import {
+  ActionFunction,
+  json,
+  LinksFunction,
+  LoaderArgs,
+  MetaFunction
+} from '@remix-run/cloudflare';
 import {
   Links,
   LiveReload,
   Meta,
   Scripts,
-  ScrollRestoration
+  ScrollRestoration,
+  useLoaderData
 } from '@remix-run/react';
 import styles from '~/styles/tailwind.css';
 import appStyles from '~/styles/app.css';
 import Layout from './components/Layout';
+import { commitSession, getSession } from './lib/session.server';
 
 export const meta: MetaFunction = () => ({
   charset: 'utf-8',
@@ -68,14 +76,52 @@ export const links: LinksFunction = () => [
   }
 ];
 
+export const loader = async ({ request }: LoaderArgs) => {
+  const session = await getSession(request.headers.get('Cookie'));
+
+  return json({
+    theme: session.get('theme') ?? 'light'
+  });
+};
+
+export const action: ActionFunction = async ({ request }) => {
+  const session = await getSession(request.headers.get('Cookie'));
+
+  const theme = session.get('theme');
+
+  if (theme) {
+    const newTheme = theme === 'dark' ? 'light' : 'dark';
+
+    session.set('theme', newTheme);
+
+    return json(
+      {},
+      { headers: { 'Set-Cookie': await commitSession(session) } }
+    );
+  }
+
+  session.set('theme', 'dark');
+
+  return json(
+    {},
+    {
+      headers: {
+        'Set-Cookie': await commitSession(session)
+      }
+    }
+  );
+};
+
 export default function App() {
+  const { theme } = useLoaderData<typeof loader>();
+
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className={`scroll-smooth ${theme}`}>
       <head>
         <Meta />
         <Links />
       </head>
-      <body className="from-indigo-50 bg-gradient-to-br to-gray-200 min-h-screen via-white">
+      <body className="from-indigo-50 dark:from-zinc-900 dark:to-gray-900 bg-gradient-to-br to-gray-200 min-h-screen via-white">
         <Layout />
         <ScrollRestoration />
         <Scripts />

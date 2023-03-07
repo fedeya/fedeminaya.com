@@ -35,7 +35,7 @@ export default function OSSSection() {
         <Link
           to="https://github.com/sponsors/fedeya"
           target="_blank"
-          className="rounded-md w-fit flex items-center gap-2 text-xs border-stone-500 p-2 shadow border"
+          className="rounded-md dark:border-gray-500 w-fit flex items-center gap-2 text-xs border-stone-500 p-2 shadow border"
         >
           <FaHeart />
           <span>Sponsor Me</span>
