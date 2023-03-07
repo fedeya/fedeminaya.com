@@ -20,7 +20,7 @@ export default function Index() {
         👉🏾
         <a
           aria-label="Github"
-          href="https://github.com/Fedeya"
+          href="https://github.com/fedeya"
           target="_blank"
           className="font-medium underline"
           rel="noopener noreferrer"
