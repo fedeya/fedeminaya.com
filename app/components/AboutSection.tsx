@@ -1,4 +1,5 @@
 import { FaStar } from 'react-icons/fa';
+import ExperienceSection from './ExperienceSection';
 
 function Skills() {
   return (
@@ -99,6 +100,8 @@ export default function AboutSection() {
       </p>
 
       <Skills />
+
+      <ExperienceSection />
     </div>
   );
 }
