@@ -4,7 +4,7 @@ import OSSProjectCard from '~/components/OSSProjectCard';
 
 export default function Index() {
   return (
-    <div className="font-sans mx-auto sm:p-10 p-4 max-w-4xl">
+    <div className="font-sans mx-auto sm:px-10 py-2 px-4 max-w-4xl">
       <header className="mb-4">
         <nav className="flex justify-between items-center py-2">
           <ul className="flex items-center gap-2">
