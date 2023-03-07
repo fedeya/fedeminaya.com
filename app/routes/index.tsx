@@ -101,10 +101,8 @@ export default function Index() {
         <p className="mt-4 flex gap-2 flex-col">
           <span className="block">
             Welcome to my personal website! My name is Fede, a{' '}
-            <span className="font-medium">
-              Semi Senior Web Developer at Aerolab
-            </span>{' '}
-            who is passionate about web perfomance and new technologies.
+            <span className="font-medium">Web Developer at Aerolab</span> who is
+            passionate about web perfomance and new technologies.
           </span>
           <span className="block">
             I enjoy trying new things, gaming and helping other people, and I'm
