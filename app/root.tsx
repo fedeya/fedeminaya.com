@@ -18,9 +18,10 @@ import appStyles from '~/styles/app.css';
 import Layout from './components/Layout';
 import { commitSession, getSession } from './lib/session.server';
 
-export const meta: MetaFunction = () => ({
+export const meta: MetaFunction<typeof loader> = ({ data }) => ({
   charset: 'utf-8',
   title: 'Federico Minaya',
+  'theme-color': data.theme === 'dark' ? '#18181b' : '#e5e7eb',
   description:
     'Federico Minaya is a full stack developer with a passion for building web applications.',
   'og:type': 'website',
