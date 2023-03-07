@@ -117,7 +117,7 @@ export default function App() {
   const { theme } = useLoaderData<typeof loader>();
 
   return (
-    <html lang="en" className={`scroll-smooth ${theme}`}>
+    <html lang="en" data-theme={theme} className={`scroll-smooth ${theme}`}>
       <head>
         <Meta />
         <Links />
