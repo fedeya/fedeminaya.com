@@ -9,7 +9,7 @@ export default function Layout() {
     <div className="font-sans dark:text-gray-200 mx-auto sm:px-10 py-4 px-4 max-w-4xl">
       <header className="mb-4">
         <nav className="flex gap-2 justify-between items-center py-2">
-          <ul className="flex items-center gap-2">
+          <ul className="flex items-center gap-3">
             <li>
               <Link to="/#about" className="underline">
                 About
