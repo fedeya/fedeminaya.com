@@ -8,7 +8,8 @@ export const meta: MetaFunction = () => ({
   'og:title': 'Knowledge - Federico Minaya',
   'og:description': 'Skills and experience of Federico Minaya',
   'og:url': 'https://fedeminaya.com/knowledge',
-  'og:image': 'https://fedeminaya.com/images/og-knowledge.png'
+  'og:image:alt': 'Knowledge',
+  'og:image:url': 'https://fedeminaya.com/images/og-knowledge.jpg'
 });
 
 export default function Knowledge() {

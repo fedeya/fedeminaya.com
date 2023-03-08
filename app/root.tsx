@@ -29,10 +29,13 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => ({
   'X-UA-Compatible': 'IE=edge,chrome=1',
   'og:site_name': 'Federico Minaya',
   'og:title': 'Federico Minaya',
+  'og:image:type': 'image/jpg',
+  'og:image:width': '1200',
+  'og:image:height': '630',
   'og:description':
     'Federico Minaya is a full stack developer with a passion for building web applications.',
   'og:url': 'https://fedeminaya.com',
-  'twitter:card': 'summary',
+  'twitter:card': 'summary_large_image',
   'twitter:site': '@fedeminaya',
   'twitter:creator': '@fedeminaya',
   viewport: 'width=device-width,initial-scale=1'

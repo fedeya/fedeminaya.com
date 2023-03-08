@@ -4,7 +4,8 @@ import Hero from '~/components/Hero';
 import OSSSection from '~/components/OSSSection';
 
 export const meta: MetaFunction = () => ({
-  'og:image': 'https://fedeminaya.com/images/og-home.png'
+  'og:image:url': 'https://fedeminaya.com/images/og-home.jpg',
+  'og:image:alt': 'Home'
 });
 
 export default function Index() {
