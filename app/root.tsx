@@ -26,6 +26,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => ({
   description:
     'Federico Minaya is a full stack developer with a passion for building web applications.',
   'og:type': 'website',
+  'X-UA-Compatible': 'IE=edge,chrome=1',
   'og:site_name': 'Federico Minaya',
   'og:title': 'Federico Minaya',
   'og:description':
