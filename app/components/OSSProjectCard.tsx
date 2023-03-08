@@ -16,7 +16,7 @@ const OSSProjectCard: FC<OSSProjectCardProps> = ({
   link
 }) => {
   return (
-    <div className="border py-2 px-3 flex dark:border-gray-600 flex-col justify-between gap-1 rounded-md shadow border-stone-500">
+    <div className="border py-3 px-4 flex dark:border-gray-600 flex-col justify-between gap-1 rounded-md shadow border-stone-500">
       <div>
         <h3 className="text-lg font-medium">{title}</h3>
 

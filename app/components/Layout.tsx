@@ -8,7 +8,7 @@ export default function Layout() {
   return (
     <div className="font-sans dark:text-gray-200 mx-auto sm:px-10 py-4 px-4 max-w-4xl">
       <header className="mb-4">
-        <nav className="flex justify-between items-center py-2">
+        <nav className="flex gap-2 justify-between items-center py-2">
           <ul className="flex items-center gap-2">
             <li>
               <Link to="/#about" className="underline">
@@ -19,6 +19,12 @@ export default function Layout() {
             <li>
               <Link to="/#oss" className="underline">
                 OSS
+              </Link>
+            </li>
+
+            <li>
+              <Link to="/knowledge" className="underline">
+                Knowledge
               </Link>
             </li>
           </ul>
