@@ -17,6 +17,7 @@ import styles from '~/styles/tailwind.css';
 import appStyles from '~/styles/app.css';
 import Layout from './components/Layout';
 import { commitSession, getSession } from './lib/session.server';
+import isbot from 'isbot';
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => ({
   charset: 'utf-8',
@@ -81,7 +82,8 @@ export const loader = async ({ request }: LoaderArgs) => {
   const session = await getSession(request.headers.get('Cookie'));
 
   return json({
-    theme: session.get('theme') ?? 'light'
+    theme: session.get('theme') ?? 'light',
+    isBot: isbot(request.headers.get('User-Agent') ?? '')
   });
 };
 
@@ -114,7 +116,7 @@ export const action: ActionFunction = async ({ request }) => {
 };
 
 export default function App() {
-  const { theme } = useLoaderData<typeof loader>();
+  const { theme, isBot } = useLoaderData<typeof loader>();
 
   return (
     <html lang="en" data-theme={theme} className={`scroll-smooth ${theme}`}>
@@ -125,7 +127,7 @@ export default function App() {
       <body className="from-indigo-50 dark:from-zinc-900 dark:to-gray-900 dark:via-gray-900 bg-gradient-to-br to-gray-200 min-h-screen via-white">
         <Layout />
         <ScrollRestoration />
-        <Scripts />
+        {!isBot && <Scripts />}
         <LiveReload />
       </body>
     </html>
