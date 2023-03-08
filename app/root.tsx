@@ -1,10 +1,10 @@
-import {
+import type {
   ActionFunction,
-  json,
   LinksFunction,
   LoaderArgs,
   MetaFunction
 } from '@remix-run/cloudflare';
+import { json } from '@remix-run/cloudflare';
 import {
   Links,
   LiveReload,
