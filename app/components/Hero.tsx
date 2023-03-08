@@ -23,7 +23,7 @@ export default function Hero() {
         </p>
       </div>
 
-      <div className="text-xl flex-wrap flex gap-4">
+      <div className="text-xl flex-wrap flex gap-1 sm:gap-4 xs:gap-3">
         <a
           aria-label="Linkedin"
           href="https://linkedin.com/in/federico-minaya"
