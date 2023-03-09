@@ -50,7 +50,7 @@ jobs:
         run: npm i -g wrangler
 
       - name: Build Website
-        run: pnpm run build -- --filter=web
+        run: pnpm run build:web
 
       - name: Deploy Website
         run: |
