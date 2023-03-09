@@ -15,7 +15,12 @@ const Experience: FC<ExperienceProps> = ({ experience }) => {
         <div className="flex items-end gap-2">
           {experience.logo && (
             <img
-              src={builder.image(experience.logo).width(32).height(32).url()}
+              src={builder
+                .image(experience.logo)
+                .width(32)
+                .height(32)
+                .format('webp')
+                .url()}
               alt={experience.name}
               className="w-8 object-cover h-8 rounded-md"
             />
