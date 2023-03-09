@@ -1,8 +1,9 @@
 node_modules
 
-/.cache
-/functions/\[\[path\]\].js
-/functions/\[\[path\]\].js.map
-/public/build
+.cache
+apps/web/functions/\[\[path\]\].js
+apps/web/functions/\[\[path\]\].js.map
+apps/web/public/build
 .env
-/app/styles/tailwind.css
+apps/web/app/styles/tailwind.css
+.turbo
