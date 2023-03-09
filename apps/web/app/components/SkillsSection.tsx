@@ -6,7 +6,7 @@ export default function SkillsSection() {
 
   return (
     <div className="pt-10">
-      <h3 className="text-2xl font-semibold">Technical Skills</h3>
+      <h2 className="text-2xl font-semibold">Technical Skills</h2>
 
       <div className="pt-2 flex flex-col gap-4">
         {skillsCategories.map(category => (

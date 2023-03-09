@@ -51,7 +51,7 @@ export default function ExperienceSection() {
 
   return (
     <div className="pt-10">
-      <h3 className="text-2xl font-semibold">Work Experience</h3>
+      <h2 className="text-2xl font-semibold">Work Experience</h2>
 
       <div className="flex flex-col gap-6 mt-4">
         {experiences.map(experience => (
