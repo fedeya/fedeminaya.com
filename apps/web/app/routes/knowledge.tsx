@@ -1,4 +1,5 @@
-import type { MetaFunction } from '@remix-run/cloudflare';
+import type { LoaderArgs, MetaFunction } from '@remix-run/cloudflare';
+import { jsonHash } from 'remix-utils';
 import ExperienceSection from '~/components/ExperienceSection';
 import SkillsSection from '~/components/SkillsSection';
 
@@ -11,6 +12,13 @@ export const meta: MetaFunction = () => ({
   'og:image:alt': 'Knowledge',
   'og:image:url': 'https://fedeminaya.com/images/og-knowledge.jpg'
 });
+
+export const loader = async ({ context }: LoaderArgs) => {
+  return jsonHash({
+    skillsCategories: context.services.api.getSkillsCategories(),
+    experiences: context.services.api.getExperiences()
+  });
+};
 
 export default function Knowledge() {
   return (

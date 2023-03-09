@@ -11,6 +11,7 @@ importers:
   apps/studio:
     specifiers:
       '@sanity/eslint-config-studio': ^2.0.1
+      '@sanity/icons': ^2.2.2
       '@sanity/vision': ^3.0.0
       '@types/react': ^18.0.25
       '@types/styled-components': ^5.1.26
@@ -23,6 +24,7 @@ importers:
       styled-components: ^5.2.0
       typescript: ^4.0.0
     dependencies:
+      '@sanity/icons': 2.2.2_react@18.2.0
       '@sanity/vision': 3.6.0_twebgoqjkqellgizumyhahsaxe
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
@@ -45,12 +47,16 @@ importers:
       '@remix-run/dev': ^1.14.0
       '@remix-run/eslint-config': ^1.14.0
       '@remix-run/react': ^1.14.0
+      '@sanity/image-url': ^1.0.2
       '@types/react': ^18.0.15
       '@types/react-dom': ^18.0.6
+      clsx: ^1.2.1
       cross-env: ^7.0.3
       eslint: ^8.23.1
+      groq: ^3.6.0
       isbot: ^3.6.6
       npm-run-all: ^4.1.5
+      picosanity: ^4.0.0
       react: ^18.2.0
       react-dom: ^18.2.0
       react-icons: ^4.6.0
@@ -63,8 +69,12 @@ importers:
       '@remix-run/cloudflare': 1.14.0_3aj2hlnru2coifkh7o3itcdmie
       '@remix-run/cloudflare-pages': 1.14.0_3aj2hlnru2coifkh7o3itcdmie
       '@remix-run/react': 1.14.0_biqbaboplfbrettd7655fr4n2y
+      '@sanity/image-url': 1.0.2
+      clsx: 1.2.1
       cross-env: 7.0.3
+      groq: 3.6.0
       isbot: 3.6.6
+      picosanity: 4.0.0
       react: 18.2.0
       react-dom: 18.2.0_react@18.2.0
       react-icons: 4.8.0_react@18.2.0
@@ -4013,6 +4023,11 @@ packages:
     engines: {node: '>=0.8'}
     dev: true
 
+  /clsx/1.2.1:
+    resolution: {integrity: sha512-EcR6r5a8bj6pu3ycsa/E/cKVGuTgZJZdsyUYHOksG/UHIiKfjxzRxYJpyVBwYaQeOvghal9fcc4PidlgzugAQg==}
+    engines: {node: '>=6'}
+    dev: false
+
   /codemirror/6.0.1:
     resolution: {integrity: sha512-J8j+nZ+CdWmIeFIGXEFbFPtpiYacFMDR8GlHK3IyHQJMCaVRfGx9NT+Hxivv1ckLWPvNdZqndbr/7lVhrf/Svg==}
     dependencies:
@@ -5902,6 +5917,11 @@ packages:
     resolution: {integrity: sha512-qJeuEgziddryH1ClsJvMoZM9aXNQbBViNZZrJwhHKr2wU8HGGM7uNWNVFglWXMX60MMaa2SClX3UohP76Ut68g==}
     dev: false
 
+  /groq/3.6.0:
+    resolution: {integrity: sha512-IJr1eRjIcpENtkBM+U1KB7VmHkObz02bb4NwtjoKy+Ak6CySvsvn3KOKflTryE2bIBDrPSAz4JXNOUZvMcVSlg==}
+    engines: {node: '>=14'}
+    dev: false
+
   /gunzip-maybe/1.4.2:
     resolution: {integrity: sha512-4haO1M4mLO91PW57BMsDFf75UmwoRX0GkdD+Faw+Lr+r/OZrOCS0pIBwOL1xCKQqnQzbNFGgK2V2CpBUPeFNTw==}
     hasBin: true
@@ -7602,7 +7622,6 @@ packages:
         optional: true
     dependencies:
       whatwg-url: 5.0.0
-    dev: true
 
   /node-forge/1.3.1:
     resolution: {integrity: sha512-dPEtOeMvF9VMcYV/1Wb8CPoVAXtp6MKMlcbAt4ddqmGqUJ6fQZFXkNZNkNlfevtNkGtaSoXf/vNNNSvgrdXwtA==}
@@ -8085,6 +8104,15 @@ packages:
   /picomatch/2.3.1:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
+
+  /picosanity/4.0.0:
+    resolution: {integrity: sha512-WM0GXBEXNgA4v/NfGt5xiARLI1qMKLBJ3+OQkJ82MFbLduAi+xg6PdC5BVXVRnXzXRSnl9PkUh/hYRScu6/cqA==}
+    engines: {node: '>=12'}
+    dependencies:
+      node-fetch: 2.6.9
+    transitivePeerDependencies:
+      - encoding
+    dev: false
 
   /pidtree/0.3.1:
     resolution: {integrity: sha512-qQbW94hLHEqCg7nhby4yRC7G2+jYHY4Rguc2bjw7Uug4GIJuu1tvf2uHaZv5Q8zdt+WKJ6qK1FOI6amaWUo5FA==}
@@ -9739,7 +9767,6 @@ packages:
 
   /tr46/0.0.3:
     resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
-    dev: true
 
   /tr46/3.0.0:
     resolution: {integrity: sha512-l7FvfAHlcmulp8kr+flpQZmVwtu7nfRV7NZujtN0OqES8EL4O4e0qqzL0DC5gAvx/ZC/9lk6rhcUwYvkBnBnYA==}
@@ -10302,7 +10329,6 @@ packages:
 
   /webidl-conversions/3.0.1:
     resolution: {integrity: sha512-2JAn3z8AR6rjK8Sm8orRC0h/bcl/DqL7tRPdGZ4I1CjdF+EaMLmYxBHyXuKL849eucPFhvBoxMsflfOb8kxaeQ==}
-    dev: true
 
   /webidl-conversions/7.0.0:
     resolution: {integrity: sha512-VwddBukDzu71offAQR975unBIGqfKZpM+8ZX6ySk8nYhVoo5CYaZyzt3YBvYtRtO+aoGlqxPg/B87NGVZ/fu6g==}
@@ -10334,7 +10360,6 @@ packages:
     dependencies:
       tr46: 0.0.3
       webidl-conversions: 3.0.1
-    dev: true
 
   /which-boxed-primitive/1.0.2:
     resolution: {integrity: sha512-bwZdv0AKLpplFY2KZRX6TvyuN7ojjr7lwkg6ml0roIy9YeuSr7JS372qlNW18UQYzgYK9ziGcerWqZOmEn9VNg==}

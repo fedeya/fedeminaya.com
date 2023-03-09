@@ -1,6 +1,5 @@
 import type { FC } from 'react';
 import { Link } from '@remix-run/react';
-import { HiOutlineArrowUpRight } from 'react-icons/hi2';
 
 type OSSProjectCardProps = {
   title: string;

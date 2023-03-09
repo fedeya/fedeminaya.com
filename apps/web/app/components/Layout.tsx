@@ -1,17 +1,8 @@
-import { json, type LoaderArgs } from '@remix-run/cloudflare';
 import { Link, Outlet, Form, useLoaderData } from '@remix-run/react';
 import { FaHeart, FaMoon, FaSun } from 'react-icons/fa';
-import { getSession } from '~/lib/session.server';
+import type { loader } from '~/root';
 
-export const loader = async ({ request }: LoaderArgs) => {
-  const session = await getSession(request.headers.get('Cookie'));
-
-  return json({
-    theme: session.get('theme') ?? 'light'
-  });
-};
-
-export default function MarketingLayout() {
+export default function Layout() {
   const { theme } = useLoaderData<typeof loader>();
 
   return (

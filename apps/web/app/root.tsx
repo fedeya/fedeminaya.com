@@ -17,7 +17,7 @@ import styles from '~/styles/tailwind.css';
 import appStyles from '~/styles/app.css';
 import { commitSession, getSession } from './lib/session.server';
 import isbot from 'isbot';
-import { Outlet } from '@remix-run/react';
+import Layout from './components/Layout';
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => ({
   charset: 'utf-8',
@@ -129,7 +129,7 @@ export default function App() {
         <Links />
       </head>
       <body className="from-indigo-50 dark:from-zinc-900 dark:to-gray-900 dark:via-gray-900 bg-gradient-to-br to-gray-200 min-h-screen via-white">
-        <Outlet />
+        <Layout />
         <ScrollRestoration />
         {!isBot && <Scripts />}
         <LiveReload />
