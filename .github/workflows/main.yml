@@ -1,9 +1,11 @@
 name: Deploy to Cloudflare
+
 on:
   push:
   
 jobs:
-  build:
+  deploy-website:
+    name: Deploy Website
     runs-on: ubuntu-latest
     steps:
 
