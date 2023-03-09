@@ -1,9 +1,17 @@
-import { Link, Outlet, Form, useLoaderData } from '@remix-run/react';
+import {
+  Link,
+  Outlet,
+  Form,
+  useLoaderData,
+  useFetcher
+} from '@remix-run/react';
 import { FaHeart, FaMoon, FaSun } from 'react-icons/fa';
 import type { loader } from '~/root';
 
 export default function Layout() {
   const { theme } = useLoaderData<typeof loader>();
+
+  const fetcher = useFetcher();
 
   return (
     <div className="font-sans dark:text-gray-200 mx-auto sm:px-10 py-4 px-4 max-w-4xl">
@@ -39,7 +47,7 @@ export default function Layout() {
               <span>Sponsor</span>
             </Link>
 
-            <Form method="post">
+            <fetcher.Form action="/theme" method="post">
               <button
                 className="rounded-md flex dark:border-gray-500 items-center gap-2 border-stone-500 p-2 shadow border"
                 type="submit"
@@ -47,7 +55,7 @@ export default function Layout() {
               >
                 {theme === 'dark' ? <FaSun /> : <FaMoon />}
               </button>
-            </Form>
+            </fetcher.Form>
           </div>
         </nav>
       </header>

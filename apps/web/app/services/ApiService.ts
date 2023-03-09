@@ -1,7 +1,6 @@
 import { experienceSchema, skillCategorySchema } from '~/lib/schemas';
 import { client } from '~/lib/sanity';
-import * as queries from '~/lib/queries';
-import { getExperiences } from '../lib/queries';
+import * as queries from '~/lib/queries.server';
 
 export class ApiService {
   // constructor(private kv: KVNamespace) {}
@@ -18,7 +17,7 @@ export class ApiService {
       year: 'numeric'
     });
 
-    const response = await client.fetch(getExperiences);
+    const response = await client.fetch(queries.getExperiences);
 
     const experiences = experienceSchema.array().parse(response);
 

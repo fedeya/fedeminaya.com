@@ -1,5 +1,4 @@
 import type {
-  ActionFunction,
   LinksFunction,
   LoaderArgs,
   MetaFunction
@@ -15,9 +14,9 @@ import {
 } from '@remix-run/react';
 import styles from '~/styles/tailwind.css';
 import appStyles from '~/styles/app.css';
-import { commitSession, getSession } from './lib/session.server';
 import isbot from 'isbot';
 import Layout from './components/Layout';
+import { getTheme } from './lib/theme.server';
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => ({
   charset: 'utf-8',
@@ -83,40 +82,10 @@ export const links: LinksFunction = () => [
 ];
 
 export const loader = async ({ request }: LoaderArgs) => {
-  const session = await getSession(request.headers.get('Cookie'));
-
   return json({
-    theme: session.get('theme') ?? 'light',
+    theme: await getTheme(request.headers),
     isBot: isbot(request.headers.get('User-Agent') ?? '')
   });
-};
-
-export const action: ActionFunction = async ({ request }) => {
-  const session = await getSession(request.headers.get('Cookie'));
-
-  const theme = session.get('theme');
-
-  if (theme) {
-    const newTheme = theme === 'dark' ? 'light' : 'dark';
-
-    session.set('theme', newTheme);
-
-    return json(
-      {},
-      { headers: { 'Set-Cookie': await commitSession(session) } }
-    );
-  }
-
-  session.set('theme', 'dark');
-
-  return json(
-    {},
-    {
-      headers: {
-        'Set-Cookie': await commitSession(session)
-      }
-    }
-  );
 };
 
 export default function App() {

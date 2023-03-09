@@ -20,6 +20,8 @@ export const loader = async ({ context }: LoaderArgs) => {
   });
 };
 
+export const shouldRevalidate = () => false;
+
 export default function Knowledge() {
   return (
     <div>
