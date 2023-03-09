@@ -13,8 +13,19 @@ export class ApiService {
   }
 
   async getExperiences() {
-    const experiences = await client.fetch(getExperiences);
+    const { format } = Intl.DateTimeFormat('en-US', {
+      month: '2-digit',
+      year: 'numeric'
+    });
 
-    return experienceSchema.array().parse(experiences);
+    const response = await client.fetch(getExperiences);
+
+    const experiences = experienceSchema.array().parse(response);
+
+    return experiences.map(experience => ({
+      ...experience,
+      start: format(new Date(experience.start)),
+      end: experience.end ? format(new Date(experience.end)) : 'Present'
+    }));
   }
 }

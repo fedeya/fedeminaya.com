@@ -8,11 +8,6 @@ type ExperienceProps = {
   experience: IExperience;
 };
 
-const { format } = new Intl.DateTimeFormat('en-US', {
-  year: 'numeric',
-  month: '2-digit'
-});
-
 const Experience: FC<ExperienceProps> = ({ experience }) => {
   return (
     <div>
@@ -36,9 +31,9 @@ const Experience: FC<ExperienceProps> = ({ experience }) => {
         </div>
 
         <p className="text-sm font-medium">
-          {format(new Date(experience.start))}
+          {experience.start}
           {' - '}
-          {experience.end ? format(new Date(experience.end)) : 'Present'}
+          {experience.end}
         </p>
       </div>
 
