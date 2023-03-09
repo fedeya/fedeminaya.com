@@ -4,13 +4,37 @@ on:
   push:
   
 jobs:
+  deploy-sanity:
+    name: Deploy Sanity Studio
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '16.x'
+
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
+
+      - name: Install Dependencies for Studio
+        run: pnpm install --filter=studio --frozen-lockfile
+
+      - name: Install Sanity CLI
+        run: npm i -g @sanity/cli
+
+      - name: Deploy Sanity
+        run: |
+          cd apps/studio
+          SANITY_AUTH_TOKEN="${{ secrets.SANITY_AUTH_TOKEN }}" sanity deploy
+
   deploy-website:
     name: Deploy Website
     runs-on: ubuntu-latest
     steps:
-
       - uses: actions/checkout@v3
-      # Setup .npmrc file to publish to npm
+
       - uses: actions/setup-node@v3
         with:
           node-version: '16.x'
