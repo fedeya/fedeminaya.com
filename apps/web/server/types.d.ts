@@ -1,4 +1,4 @@
-import type { ApiService } from '~/services/ApiService';
+import type { ApiService } from '~/services/api';
 import type { Env } from './env';
 
 declare module '@remix-run/cloudflare' {

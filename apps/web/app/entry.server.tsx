@@ -2,6 +2,7 @@ import { renderToReadableStream } from 'react-dom/server';
 import { RemixServer } from '@remix-run/react';
 import type { EntryContext } from '@remix-run/cloudflare'; // or cloudflare/deno
 import isbot from 'isbot';
+import { otherRootRouteHandlers } from './utils/otherRootRoutes.server';
 
 export default async function handleRequest(
   request: Request,
@@ -10,6 +11,11 @@ export default async function handleRequest(
   remixContext: EntryContext
 ) {
   let didError = false;
+
+  for (const handler of otherRootRouteHandlers) {
+    const otherRouteResponse = await handler(request, remixContext);
+    if (otherRouteResponse) return otherRouteResponse;
+  }
 
   const stream = await renderToReadableStream(
     <RemixServer context={remixContext} url={request.url} />,

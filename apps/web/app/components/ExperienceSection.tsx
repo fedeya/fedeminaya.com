@@ -1,7 +1,7 @@
 import { Link, useLoaderData } from '@remix-run/react';
 import type { FC } from 'react';
 import { type Experience as IExperience } from '~/lib/schemas';
-import type { loader } from '~/routes/knowledge';
+import type { loader } from '~/routes/cv';
 import { builder } from '~/lib/sanity';
 
 type ExperienceProps = {
@@ -51,7 +51,7 @@ export default function ExperienceSection() {
 
   return (
     <div className="pt-10">
-      <h3 className="text-2xl font-semibold">Experience</h3>
+      <h3 className="text-2xl font-semibold">Work Experience</h3>
 
       <div className="flex flex-col gap-6 mt-4">
         {experiences.map(experience => (

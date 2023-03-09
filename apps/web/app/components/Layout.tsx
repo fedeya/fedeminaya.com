@@ -1,10 +1,4 @@
-import {
-  Link,
-  Outlet,
-  Form,
-  useLoaderData,
-  useFetcher
-} from '@remix-run/react';
+import { Link, Outlet, useLoaderData, useFetcher } from '@remix-run/react';
 import { FaHeart, FaMoon, FaSun } from 'react-icons/fa';
 import type { loader } from '~/root';
 
@@ -31,8 +25,8 @@ export default function Layout() {
             </li>
 
             <li>
-              <Link to="/knowledge" className="underline">
-                Knowledge
+              <Link to="/cv" className="underline">
+                CV
               </Link>
             </li>
           </ul>

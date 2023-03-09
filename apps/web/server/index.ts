@@ -2,7 +2,7 @@ import type { AppLoadContext } from '@remix-run/cloudflare';
 
 import { createPagesFunctionHandler } from '@remix-run/cloudflare-pages';
 import * as build from '@remix-run/dev/server-build';
-import { ApiService } from '~/services/ApiService';
+import { ApiService } from '~/services/api';
 
 import { envSchema } from './env';
 
@@ -13,7 +13,7 @@ const handleRequest = createPagesFunctionHandler({
     const env = envSchema.parse(context.env);
 
     const services = {
-      api: new ApiService()
+      api: new ApiService(context.env.content)
     };
 
     return {

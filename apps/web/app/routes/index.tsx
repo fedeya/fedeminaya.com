@@ -5,6 +5,7 @@ import OSSSection from '~/components/OSSSection';
 
 export const meta: MetaFunction = () => ({
   'og:image:url': 'https://fedeminaya.com/images/og-home.jpg',
+  keywords: 'federico, minaya, fedeminaya, developer, web, full stack, home',
   'og:image:alt': 'Home'
 });
 

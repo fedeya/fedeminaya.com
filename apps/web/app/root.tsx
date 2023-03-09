@@ -21,6 +21,7 @@ import { getTheme } from './lib/theme.server';
 export const meta: MetaFunction<typeof loader> = ({ data }) => ({
   charset: 'utf-8',
   title: 'Federico Minaya',
+  keywords: 'federico, minaya, fedeminaya, developer, web, full stack, fedeya',
   'theme-color': data.theme === 'dark' ? '#18181b' : '#e5e7eb',
   description:
     'Federico Minaya is a full stack developer with a passion for building web applications.',
@@ -33,7 +34,6 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => ({
   'og:image:height': '630',
   'og:description':
     'Federico Minaya is a full stack developer with a passion for building web applications.',
-  'og:url': 'https://fedeminaya.com',
   'twitter:card': 'summary_large_image',
   'twitter:site': '@fedeminaya',
   'twitter:creator': '@fedeminaya',

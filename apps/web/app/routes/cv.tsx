@@ -4,12 +4,13 @@ import ExperienceSection from '~/components/ExperienceSection';
 import SkillsSection from '~/components/SkillsSection';
 
 export const meta: MetaFunction = () => ({
-  title: 'Knowledge - Federico Minaya',
+  title: 'CV - Federico Minaya',
+  keywords:
+    'federico, minaya, fedeminaya, developer, web, full stack, cv, curriculum, skills, experience, fedeya',
   description: 'Skills and experience of Federico Minaya',
-  'og:title': 'Knowledge - Federico Minaya',
+  'og:title': 'CV - Federico Minaya',
   'og:description': 'Skills and experience of Federico Minaya',
-  'og:url': 'https://fedeminaya.com/knowledge',
-  'og:image:alt': 'Knowledge',
+  'og:image:alt': 'CV',
   'og:image:url': 'https://fedeminaya.com/images/og-knowledge.jpg'
 });
 
@@ -22,14 +23,14 @@ export const loader = async ({ context }: LoaderArgs) => {
 
 export const shouldRevalidate = () => false;
 
-export default function Knowledge() {
+export default function CV() {
   return (
     <div>
-      <h1 className="font-semibold text-3xl">Knowledge</h1>
-
-      <SkillsSection />
+      <h1 className="font-semibold text-3xl">Curriculum</h1>
 
       <ExperienceSection />
+
+      <SkillsSection />
     </div>
   );
 }

@@ -1,3 +1,5 @@
+import Balancer from 'react-wrap-balancer';
+
 export default function AboutSection() {
   return (
     <div className="pt-8 mt-6" id="about">
@@ -7,16 +9,14 @@ export default function AboutSection() {
       </div>
 
       <p className="mt-4 flex gap-2 flex-col">
-        <span className="block">
-          Welcome to my personal website! My name is Fede, a{' '}
-          <span className="font-medium">Web Developer at Aerolab</span> who is
-          passionate about web perfomance and new technologies.
-        </span>
-        <span className="block">
-          I enjoy trying new things, gaming and helping other people, and I'm
-          always looking for new ways to learn and grow personally and
-          professionally.
-        </span>
+        <Balancer>
+          Hey! I'm Fede, I'm{' '}
+          <span className="font-medium">Web Developer at Aerolab</span> from
+          Argentina, who is passionate about web perfomance and new
+          technologies. I enjoy trying new things, gaming and helping other
+          people, and I'm always looking for new ways to learn and grow
+          personally and professionally.
+        </Balancer>
       </p>
     </div>
   );

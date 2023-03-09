@@ -1,4 +1,5 @@
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
+import Balancer from 'react-wrap-balancer';
 
 export default function Hero() {
   return (
@@ -16,10 +17,11 @@ export default function Hero() {
         </h2>
 
         <p>
-          On this site, you'll find information about me, my work, and past and
-          current projects.
-          <br />
-          <span className="font-medium">Thanks you for visiting!</span>
+          <Balancer>
+            Welcome to my personal website! On this site, you'll find
+            information about me, my work, and past and current projects.
+            <span className="font-medium block">Thanks you for visiting!</span>
+          </Balancer>
         </p>
       </div>
 
