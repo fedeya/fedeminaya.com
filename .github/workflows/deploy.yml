@@ -1,7 +1,7 @@
 name: Deploy to Cloudflare
 on:
   push:
-    branches: [turbo]
+  
 jobs:
   build:
     runs-on: ubuntu-latest
