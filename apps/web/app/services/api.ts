@@ -1,4 +1,4 @@
-import { experienceSchema, skillCategorySchema } from '~/lib/schemas';
+import { ExperienceSchema, SkillCategorySchema } from '~/lib/schemas';
 import { client } from '~/lib/sanity';
 import * as queries from '~/lib/queries.server';
 
@@ -8,10 +8,9 @@ export class ApiService {
   async getSkillsCategories() {
     const cached = await this.kv.get('skills', 'json');
 
-    if (cached) return skillCategorySchema.array().parse(cached);
+    if (cached) return SkillCategorySchema.array().parse(cached);
 
-    const skills = await skillCategorySchema
-      .array()
+    const skills = await SkillCategorySchema.array()
       .promise()
       .parse(client.fetch(queries.getSkillCategories));
 
@@ -40,10 +39,9 @@ export class ApiService {
   private async getCachedExperiences() {
     const cached = await this.kv.get('experiences', 'json');
 
-    if (cached) return experienceSchema.array().parse(cached);
+    if (cached) return ExperienceSchema.array().parse(cached);
 
-    const experiences = await experienceSchema
-      .array()
+    const experiences = await ExperienceSchema.array()
       .promise()
       .parse(client.fetch(queries.getExperiences));
 

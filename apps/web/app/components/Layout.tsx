@@ -1,6 +1,34 @@
-import { Link, Outlet, useLoaderData, useFetcher } from '@remix-run/react';
+import {
+  Outlet,
+  Link,
+  useLoaderData,
+  useFetcher,
+  NavLink as RemixNavLink
+} from '@remix-run/react';
 import { FaHeart, FaMoon, FaSun } from 'react-icons/fa';
 import type { loader } from '~/root';
+import clsx from 'clsx';
+import type { FC, ReactNode } from 'react';
+
+type NavLinkProps = {
+  to: string;
+  children: ReactNode;
+};
+
+const NavLink: FC<NavLinkProps> = ({ to, children }) => {
+  return (
+    <li>
+      <RemixNavLink
+        to={to}
+        className={({ isActive }) =>
+          clsx('underline', isActive && 'font-medium')
+        }
+      >
+        {children}
+      </RemixNavLink>
+    </li>
+  );
+};
 
 export default function Layout() {
   const { theme } = useLoaderData<typeof loader>();
@@ -12,23 +40,9 @@ export default function Layout() {
       <header className="mb-4">
         <nav className="flex gap-2 justify-between items-center py-2">
           <ul className="flex items-center gap-3">
-            <li>
-              <Link to="/#about" className="underline">
-                About
-              </Link>
-            </li>
+            <NavLink to="/">Home</NavLink>
 
-            <li>
-              <Link to="/#oss" className="underline">
-                OSS
-              </Link>
-            </li>
-
-            <li>
-              <Link to="/cv" className="underline">
-                CV
-              </Link>
-            </li>
+            <NavLink to="/cv">CV</NavLink>
           </ul>
 
           <div className="flex items-center gap-2">

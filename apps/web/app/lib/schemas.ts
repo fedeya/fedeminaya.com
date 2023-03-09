@@ -1,18 +1,22 @@
 import { z } from 'zod';
 
-export const skillSchema = z.object({
+export const SkillSchema = z.object({
   _id: z.string(),
   name: z.string(),
   includes: z.array(z.string()).nullable()
 });
 
-export const skillCategorySchema = z.object({
+export type Skill = z.infer<typeof SkillSchema>;
+
+export const SkillCategorySchema = z.object({
   _id: z.string(),
   name: z.string(),
-  skills: z.array(skillSchema)
+  skills: z.array(SkillSchema)
 });
 
-export const experienceSchema = z.object({
+export type SkillCategory = z.infer<typeof SkillCategorySchema>;
+
+export const ExperienceSchema = z.object({
   _id: z.string(),
   name: z.string(),
   logo: z
@@ -35,8 +39,4 @@ export const experienceSchema = z.object({
   )
 });
 
-export type Skill = z.infer<typeof skillSchema>;
-
-export type SkillCategory = z.infer<typeof skillCategorySchema>;
-
-export type Experience = z.infer<typeof experienceSchema>;
+export type Experience = z.infer<typeof ExperienceSchema>;
