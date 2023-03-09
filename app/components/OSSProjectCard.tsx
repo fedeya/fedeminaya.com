@@ -18,21 +18,20 @@ const OSSProjectCard: FC<OSSProjectCardProps> = ({
   return (
     <div className="border py-3 px-4 flex dark:border-gray-600 flex-col justify-between gap-1 rounded-md shadow border-stone-500">
       <div>
-        <h3 className="text-lg font-medium">{title}</h3>
+        <Link
+          to={link}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-lg font-medium underline"
+        >
+          {title}
+        </Link>
 
         <p className="text-sm">{description}</p>
       </div>
 
       <div>
         <p className="text-xs">{metrics}</p>
-
-        <Link
-          to={link}
-          target="_blank"
-          className="text-sm font-medium underline flex gap-1 mt-2 items-center"
-        >
-          See project <HiOutlineArrowUpRight aria-label="External Link" />
-        </Link>
       </div>
     </div>
   );
