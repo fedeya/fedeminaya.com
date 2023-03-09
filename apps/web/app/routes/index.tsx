@@ -16,6 +16,8 @@ export const meta: MetaFunction = () => ({
   'og:image:alt': 'Home'
 });
 
+export const shouldRevalidate = () => false;
+
 export default function Index() {
   return (
     <>
