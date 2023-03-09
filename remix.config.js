@@ -5,7 +5,10 @@ module.exports = {
   server: './server/index.ts',
   serverBuildPath: 'functions/[[path]].js',
   serverConditions: ['worker'],
-  serverDependenciesToBundle: 'all',
+  serverDependenciesToBundle: [
+    // regex for match everything but not "sanity"
+    /^(?!sanity).*$/
+  ],
   serverMainFields: ['browser', 'module', 'main'],
   serverMinify: true,
   serverModuleFormat: 'esm',
