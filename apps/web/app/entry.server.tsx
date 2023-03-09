@@ -30,6 +30,19 @@ export default async function handleRequest(
     await stream.allReady;
   }
 
+  const { staticHandlerContext } = remixContext;
+
+  const { pathname } = staticHandlerContext.location;
+
+  if (pathname) {
+    responseHeaders.set(
+      'Link',
+      `https://fedeminaya.com${
+        pathname.length > 1 ? pathname : ''
+      }; rel="canonical"`
+    );
+  }
+
   responseHeaders.set('Content-Type', 'text/html');
 
   return new Response(stream, {

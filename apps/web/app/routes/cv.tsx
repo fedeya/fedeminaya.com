@@ -1,8 +1,4 @@
-import type {
-  LinksFunction,
-  LoaderArgs,
-  MetaFunction
-} from '@remix-run/cloudflare';
+import type { LoaderArgs, MetaFunction } from '@remix-run/cloudflare';
 import { jsonHash } from 'remix-utils';
 import ExperienceSection from '~/components/ExperienceSection';
 import SkillsSection from '~/components/SkillsSection';
@@ -24,13 +20,6 @@ export const loader = async ({ context }: LoaderArgs) => {
     experiences: context.services.api.getExperiences()
   });
 };
-
-export const links: LinksFunction = () => [
-  {
-    rel: 'canonical',
-    href: 'https://fedeminaya.com/cv'
-  }
-];
 
 export const shouldRevalidate = () => false;
 

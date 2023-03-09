@@ -68,10 +68,6 @@ export const links: LinksFunction = () => [
     href: '/favicon.png'
   },
   {
-    rel: 'canonical',
-    href: 'https://fedeminaya.com'
-  },
-  {
     rel: 'stylesheet',
     href: styles
   },
