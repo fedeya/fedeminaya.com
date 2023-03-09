@@ -7,7 +7,7 @@ module.exports = {
   serverConditions: ['worker'],
   serverDependenciesToBundle: [
     // regex for match everything but not "sanity"
-    /^(?!sanity).*$/
+    /^(?![@]?sanity).*$/
   ],
   serverMainFields: ['browser', 'module', 'main'],
   serverMinify: true,
