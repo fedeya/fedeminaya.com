@@ -11,7 +11,7 @@ export default function SkillsSection() {
       <div className="pt-2 flex flex-col gap-4">
         {skillsCategories.map(category => (
           <div key={category._id}>
-            <h4 className="text-lg font-semibold">{category.name}</h4>
+            <h3 className="text-lg font-semibold">{category.name}</h3>
 
             <p className="flex gap-1 mt-2">
               {category.skills
