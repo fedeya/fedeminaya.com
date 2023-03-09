@@ -6,6 +6,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+
       - uses: actions/checkout@v3
       # Setup .npmrc file to publish to npm
       - uses: actions/setup-node@v3
@@ -16,16 +17,16 @@ jobs:
         with:
           version: 7
 
-        name: Install Dependencies for Website
-      - run: pnpm install --filter=web --frozen-lockfile
+      - name: Install Dependencies for Website
+        run: pnpm install --filter=web --frozen-lockfile
 
-        name: Install Wrangler
-      - run: npm i -g wrangler
+      - name: Install Wrangler
+        run: npm i -g wrangler
 
-        name: Build Website
-      - run: pnpm run build -- --filter=web
+      - name: Build Website
+        run: pnpm run build -- --filter=web
 
-        name: Deploy Website
-      - run: |
+      - name: Deploy Website
+        run: |
           cd apps/web
           CLOUDFLARE_API_TOKEN="${{ secrets.CLOUDFLARE_API_TOKEN }}" wrangler pages publish --project-name fedeminaya ./public
