@@ -27,3 +27,13 @@ export const getExperiences = groq`
     }
   }
 `;
+
+export const getOssProjectsQuery = groq`
+  *[_type == "oss"] | order(_createdAt asc) {
+    _id,
+    name,
+    description,
+    url,
+    metric,
+  }
+`;

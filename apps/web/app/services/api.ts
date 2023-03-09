@@ -1,4 +1,8 @@
-import { ExperienceSchema, SkillCategorySchema } from '~/lib/schemas';
+import {
+  ExperienceSchema,
+  OssProjectSchema,
+  SkillCategorySchema
+} from '~/lib/schemas';
 import { client } from '~/lib/sanity';
 import * as queries from '~/lib/queries.server';
 
@@ -34,6 +38,22 @@ export class ApiService {
       start: format(new Date(experience.start)),
       end: experience.end ? format(new Date(experience.end)) : 'Present'
     }));
+  }
+
+  async getOssProjects() {
+    const cached = await this.kv.get('oss', 'json');
+
+    if (cached) return OssProjectSchema.array().parse(cached);
+
+    const oss = await OssProjectSchema.array()
+      .promise()
+      .parse(client.fetch(queries.getOssProjectsQuery));
+
+    await this.kv.put('oss', JSON.stringify(oss), {
+      expirationTtl: 60 * 60 * 24
+    });
+
+    return oss;
   }
 
   private async getCachedExperiences() {

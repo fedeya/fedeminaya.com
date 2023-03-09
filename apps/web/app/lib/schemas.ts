@@ -40,3 +40,13 @@ export const ExperienceSchema = z.object({
 });
 
 export type Experience = z.infer<typeof ExperienceSchema>;
+
+export const OssProjectSchema = z.object({
+  _id: z.string(),
+  name: z.string(),
+  description: z.string(),
+  url: z.string(),
+  metric: z.string().nullable()
+});
+
+export type OssProject = z.infer<typeof OssProjectSchema>;

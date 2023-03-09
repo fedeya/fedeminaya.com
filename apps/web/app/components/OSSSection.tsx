@@ -1,8 +1,11 @@
-import { Link } from '@remix-run/react';
+import { Link, useLoaderData } from '@remix-run/react';
 import { FaHeart } from 'react-icons/fa';
+import type { loader } from '~/routes';
 import OSSProjectCard from './OSSProjectCard';
 
 export default function OSSSection() {
+  const { ossProjects } = useLoaderData<typeof loader>();
+
   return (
     <div className="pt-8 mt-6" id="oss">
       <div className="flex gap-1 items-center">
@@ -14,19 +17,9 @@ export default function OSSSection() {
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
-        <OSSProjectCard
-          link="https://github.com/fedeya/next-auth-sanity"
-          title="Next Auth Sanity"
-          description="NextAuth Adapter and Provider for Sanity"
-          metrics="8k+ downloads and used in 250+ projects"
-        />
-
-        <OSSProjectCard
-          link="https://github.com/fedeya/next-sanity-client"
-          title="Next Sanity Client"
-          description="Sanity Client for Next.js Apps with App Dir Support"
-          metrics="600+ downloads and used in 3+ projects"
-        />
+        {ossProjects.map(project => (
+          <OSSProjectCard key={project._id} project={project} />
+        ))}
       </div>
 
       <div className="mt-6 flex gap-2 text-center xs:text-left flex-col xs:flex-row items-center">
