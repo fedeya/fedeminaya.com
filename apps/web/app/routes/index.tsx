@@ -5,9 +5,19 @@ import Hero from '~/components/Hero';
 import OSSSection from '~/components/OSSSection';
 
 export const loader = ({ context }: LoaderArgs) => {
-  return jsonHash({
-    ossProjects: context.services.api.getOssProjects()
-  });
+  const headers = new Headers();
+
+  headers.set(
+    'Cache-Control',
+    'max-age=10, s-maxage=10, stale-while-revalidate'
+  );
+
+  return jsonHash(
+    {
+      ossProjects: context.services.api.getOssProjects()
+    },
+    { headers }
+  );
 };
 
 export const meta: MetaFunction = () => ({

@@ -15,10 +15,22 @@ export const meta: MetaFunction = () => ({
 });
 
 export const loader = async ({ context }: LoaderArgs) => {
-  return jsonHash({
-    skillsCategories: context.services.api.getSkillsCategories(),
-    experiences: context.services.api.getExperiences()
-  });
+  const headers = new Headers();
+
+  headers.set(
+    'Cache-Control',
+    'max-age=10, s-maxage=10, stale-while-revalidate'
+  );
+
+  return jsonHash(
+    {
+      skillsCategories: context.services.api.getSkillsCategories(),
+      experiences: context.services.api.getExperiences()
+    },
+    {
+      headers
+    }
+  );
 };
 
 export const shouldRevalidate = () => false;

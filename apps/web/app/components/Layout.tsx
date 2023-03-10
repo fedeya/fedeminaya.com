@@ -8,27 +8,17 @@ import {
 import { FaHeart, FaMoon, FaSun } from 'react-icons/fa';
 import type { loader } from '~/root';
 import clsx from 'clsx';
-import type { FC, ReactNode } from 'react';
 
-type NavLinkProps = {
-  to: string;
-  children: ReactNode;
-};
-
-const NavLink: FC<NavLinkProps> = ({ to, children }) => {
-  return (
-    <li>
-      <RemixNavLink
-        to={to}
-        className={({ isActive }) =>
-          clsx('underline', isActive && 'font-medium')
-        }
-      >
-        {children}
-      </RemixNavLink>
-    </li>
-  );
-};
+const navigation = [
+  {
+    name: 'Home',
+    to: '/'
+  },
+  {
+    name: 'CV',
+    to: '/cv'
+  }
+];
 
 export default function Layout() {
   const { theme } = useLoaderData<typeof loader>();
@@ -40,9 +30,19 @@ export default function Layout() {
       <header className="mb-4">
         <nav className="flex gap-2 justify-between items-center py-2">
           <ul className="flex items-center gap-3">
-            <NavLink to="/">Home</NavLink>
-
-            <NavLink to="/cv">CV</NavLink>
+            {navigation.map(nav => (
+              <li key={nav.name}>
+                <RemixNavLink
+                  prefetch="intent"
+                  to={nav.to}
+                  className={({ isActive }) =>
+                    clsx('underline', isActive && 'font-medium')
+                  }
+                >
+                  {nav.name}
+                </RemixNavLink>
+              </li>
+            ))}
           </ul>
 
           <div className="flex items-center gap-2">
