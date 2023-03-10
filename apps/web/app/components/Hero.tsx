@@ -15,14 +15,6 @@ export default function Hero() {
         <h2 className="text-xl mb-4 font-medium from-black to-stone-500 dark:from-white dark:to-gray-400 bg-gradient-to-br bg-clip-text text-transparent">
           Web Developer at Aerolab
         </h2>
-
-        <p>
-          <Balancer>
-            Welcome to my personal website! On this site, you'll find
-            information about me, my work, and past and current projects.
-            <span className="font-medium block">Thanks you for visiting!</span>
-          </Balancer>
-        </p>
       </div>
 
       <div className="text-xl flex-wrap flex gap-1 sm:gap-4 xs:gap-3">

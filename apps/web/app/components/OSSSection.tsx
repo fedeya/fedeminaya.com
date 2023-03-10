@@ -7,13 +7,14 @@ export default function OSSSection() {
   const { ossProjects } = useLoaderData<typeof loader>();
 
   return (
-    <div className="pt-8 mt-6" id="oss">
+    <div className="pt-8 mt-2" id="oss">
       <div className="flex gap-1 items-center">
         <span className="text-2xl">~</span>
         <h2 className="text-3xl font-semibold">OSS</h2>
       </div>
       <p className="mt-2 text-left font-medium">
-        Here is the list of my most important open source projects
+        I love contributing to open source and these are some of the projects I
+        have developed for the community
       </p>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-4">
