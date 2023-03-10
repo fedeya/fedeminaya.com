@@ -9,6 +9,7 @@ export default function Analytics() {
   useEffect(() => {
     if (!isLoaded.current) {
       Fathom.load('GHYYUMRV', {
+        url: 'https://one-day-life.fedeminaya.com/script.js',
         includedDomains: ['fedeminaya.com']
       });
 
