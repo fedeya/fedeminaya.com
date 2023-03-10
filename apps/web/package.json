@@ -23,6 +23,7 @@
     "@sanity/image-url": "^1.0.2",
     "clsx": "^1.2.1",
     "cross-env": "^7.0.3",
+    "fathom-client": "^3.5.0",
     "groq": "^3.6.0",
     "isbot": "^3.6.6",
     "picosanity": "^4.0.0",

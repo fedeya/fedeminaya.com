@@ -54,6 +54,7 @@ importers:
       clsx: ^1.2.1
       cross-env: ^7.0.3
       eslint: ^8.23.1
+      fathom-client: ^3.5.0
       groq: ^3.6.0
       isbot: ^3.6.6
       npm-run-all: ^4.1.5
@@ -75,6 +76,7 @@ importers:
       '@sanity/image-url': 1.0.2
       clsx: 1.2.1
       cross-env: 7.0.3
+      fathom-client: 3.5.0
       groq: 3.6.0
       isbot: 3.6.6
       picosanity: 4.0.0
@@ -5448,6 +5450,10 @@ packages:
     resolution: {integrity: sha512-wBrocU2LCXXa+lWBt8RoIRD89Fi8OdABODa/kEnyeyjS5aZO5/GNvI5sEINADqP/h8M29UHTHUb53sUu5Ihqdw==}
     dependencies:
       reusify: 1.0.4
+
+  /fathom-client/3.5.0:
+    resolution: {integrity: sha512-BiRDS9Q9a8Zma0H717FWC5cvf545K/CsxBpxKT22TcSl1EbRhhlHWIJgrdeiQUfdorBK2ppy09TwMOhRsbos/A==}
+    dev: false
 
   /fault/2.0.1:
     resolution: {integrity: sha512-WtySTkS4OKev5JtpHXnib4Gxiurzh5NCGvWrFaZ34m6JehfTUhKZvn9njTfw48t6JumVQOmrKqpmGcdwxnhqBQ==}

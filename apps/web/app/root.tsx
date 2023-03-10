@@ -17,6 +17,7 @@ import appStyles from '~/styles/app.css';
 import isbot from 'isbot';
 import Layout from './components/Layout';
 import { getTheme } from './lib/theme.server';
+import Analytics from './components/Analytics';
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => ({
   charset: 'utf-8',
@@ -95,6 +96,7 @@ export default function App() {
       </head>
       <body className="from-indigo-50 dark:from-zinc-900 dark:to-gray-900 dark:via-gray-900 bg-gradient-to-br to-gray-200 min-h-screen via-white">
         <Layout />
+        <Analytics />
         <ScrollRestoration />
         {!isBot && <Scripts />}
         <LiveReload />
