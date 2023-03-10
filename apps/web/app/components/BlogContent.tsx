@@ -13,7 +13,7 @@ const components: PortableTextComponents = {
       <h1 className="text-3xl font-semibold">{children}</h1>
     ),
     h2: ({ children }) => (
-      <h2 className="text-2xl font-semibold mt-8 mb-8">{children}</h2>
+      <h2 className="text-2xl font-semibold mt-8 mb-4">{children}</h2>
     ),
     normal: ({ children, value }) => {
       if (value.children.every(c => c.text === '')) return null;
