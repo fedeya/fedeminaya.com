@@ -1,5 +1,4 @@
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
-import Balancer from 'react-wrap-balancer';
 
 export default function Hero() {
   return (

@@ -37,3 +37,13 @@ export const getOssProjectsQuery = groq`
     metric,
   }
 `;
+
+export const getBlogBySlugQuery = groq`
+  *[_type == "blog" && slug.current == $slug][0] {
+    "createdAt": _createdAt,
+    _id,
+    title,
+    'slug': slug.current,
+    content[]
+  }
+`;

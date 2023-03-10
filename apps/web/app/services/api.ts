@@ -5,6 +5,7 @@ import {
 } from '~/lib/schemas';
 import { client } from '~/lib/sanity';
 import * as queries from '~/lib/queries.server';
+import { BlogSchema } from '../lib/schemas';
 
 export class ApiService {
   constructor(private kv: KVNamespace) {}
@@ -54,6 +55,14 @@ export class ApiService {
     });
 
     return oss;
+  }
+
+  async getBlogBySlug(slug: string) {
+    const blog = await BlogSchema.promise().parse(
+      client.fetch(queries.getBlogBySlugQuery, { slug })
+    );
+
+    return blog;
   }
 
   private async getCachedExperiences() {

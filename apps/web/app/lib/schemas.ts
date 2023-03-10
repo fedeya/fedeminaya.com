@@ -50,3 +50,13 @@ export const OssProjectSchema = z.object({
 });
 
 export type OssProject = z.infer<typeof OssProjectSchema>;
+
+export const BlogSchema = z.object({
+  _id: z.string(),
+  title: z.string(),
+  slug: z.string(),
+  content: z.array(z.any()),
+  createdAt: z.string()
+});
+
+export type Blog = z.infer<typeof BlogSchema>;

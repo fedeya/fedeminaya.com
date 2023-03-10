@@ -14,6 +14,10 @@ const navigation = [
     name: 'Home',
     to: '/'
   },
+  // {
+  // name: 'Blog',
+  // to: '/blog'
+  // },
   {
     name: 'CV',
     to: '/cv'
