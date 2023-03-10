@@ -57,6 +57,22 @@ export class ApiService {
     return oss;
   }
 
+  async getBlogs() {
+    const blogs = await BlogSchema.omit({ content: true })
+      .array()
+      .promise()
+      .parse(client.fetch(queries.getBlogsQuery));
+
+    return blogs.map(blog => ({
+      ...blog,
+      createdAt: new Date(blog.createdAt).toLocaleString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric'
+      })
+    }));
+  }
+
   async getBlogBySlug(slug: string) {
     const blog = await BlogSchema.promise().parse(
       client.fetch(queries.getBlogBySlugQuery, { slug })

@@ -38,6 +38,15 @@ export const getOssProjectsQuery = groq`
   }
 `;
 
+export const getBlogsQuery = groq`
+  *[_type == "blog"] | order(_createdAt desc) {
+    _id,
+    title,
+    'slug': slug.current,
+    "createdAt": _createdAt,
+  }
+`;
+
 export const getBlogBySlugQuery = groq`
   *[_type == "blog" && slug.current == $slug][0] {
     "createdAt": _createdAt,
