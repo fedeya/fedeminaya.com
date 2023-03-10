@@ -32,7 +32,9 @@ export default function BlogsPage() {
             <Link to={`/blog/${blog.slug}`} key={blog._id} prefetch="intent">
               <h2 className="font-medium underline">{blog.title}</h2>
 
-              <p className="text-xs">{blog.createdAt}</p>
+              <p className="text-xs">
+                {blog.createdAt} - {blog.readingTime}
+              </p>
             </Link>
           </div>
         ))}

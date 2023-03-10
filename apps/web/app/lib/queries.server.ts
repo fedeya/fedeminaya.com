@@ -44,6 +44,7 @@ export const getBlogsQuery = groq`
     title,
     'slug': slug.current,
     "createdAt": _createdAt,
+    'contentText': pt::text(content)
   }
 `;
 
@@ -53,6 +54,7 @@ export const getBlogBySlugQuery = groq`
     _id,
     title,
     'slug': slug.current,
-    content[]
+    content,
+    'contentText': pt::text(content)
   }
 `;

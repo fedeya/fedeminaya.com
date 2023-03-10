@@ -1,11 +1,12 @@
 import {
   ExperienceSchema,
   OssProjectSchema,
-  SkillCategorySchema
+  SkillCategorySchema,
+  BlogSchema
 } from '~/lib/schemas';
 import { client } from '~/lib/sanity';
 import * as queries from '~/lib/queries.server';
-import { BlogSchema } from '../lib/schemas';
+import readingTime from 'reading-time';
 
 export class ApiService {
   constructor(private kv: KVNamespace) {}
@@ -69,7 +70,8 @@ export class ApiService {
         month: 'long',
         day: 'numeric',
         year: 'numeric'
-      })
+      }),
+      readingTime: readingTime(blog.contentText).text
     }));
   }
 
@@ -78,7 +80,15 @@ export class ApiService {
       client.fetch(queries.getBlogBySlugQuery, { slug })
     );
 
-    return blog;
+    return {
+      ...blog,
+      createdAt: new Date(blog.createdAt).toLocaleString('en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric'
+      }),
+      readingTime: readingTime(blog.contentText).text
+    };
   }
 
   private async getCachedExperiences() {

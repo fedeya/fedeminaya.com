@@ -55,6 +55,7 @@ export const BlogSchema = z.object({
   _id: z.string(),
   title: z.string(),
   slug: z.string(),
+  contentText: z.string(),
   content: z.array(z.any()),
   createdAt: z.string()
 });

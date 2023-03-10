@@ -1,5 +1,5 @@
 import type { LoaderArgs, MetaFunction } from '@remix-run/cloudflare';
-import { Link, useLoaderData } from '@remix-run/react';
+import { useLoaderData } from '@remix-run/react';
 import { jsonHash } from 'remix-utils';
 
 import type { SEOHandle } from '@balavishnuvj/remix-seo';
@@ -7,7 +7,6 @@ import { client } from '~/lib/sanity';
 import { getBlogsQuery } from '~/lib/queries.server';
 import { BlogSchema } from '~/lib/schemas';
 import BlogContent from '~/components/BlogContent';
-import { FaLinkedin, FaTwitter, FaGithub } from 'react-icons/fa';
 
 export const loader = async ({ params, context }: LoaderArgs) => {
   const headers = new Headers({
@@ -48,7 +47,10 @@ export default function BlogPage() {
 
   return (
     <div>
-      <h1 className="text-3xl font-semibold">{blog.title}</h1>
+      <h1 className="text-3xl mb-2 font-semibold">{blog.title}</h1>
+      <p>
+        {blog.createdAt} - {blog.readingTime}
+      </p>
 
       <div className="mt-4">
         <BlogContent content={blog.content} />
