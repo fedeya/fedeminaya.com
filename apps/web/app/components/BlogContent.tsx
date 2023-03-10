@@ -23,7 +23,7 @@ const components: PortableTextComponents = {
   },
   marks: {
     code: ({ children }) => (
-      <span className="bg-gray-900 font-mono rounded-md inline-block text-gray-100 px-1 text-sm">
+      <span className="bg-gray-900 dark:bg-gray-700 dark:text-gray-300 font-mono rounded-md inline-block text-gray-100 px-1 text-sm">
         {children}
       </span>
     )
@@ -38,7 +38,10 @@ const components: PortableTextComponents = {
       >
         {({ className, style, tokens, getLineProps, getTokenProps }) => (
           <pre
-            className={clsx(className, 'p-3 rounded-md overflow-auto')}
+            className={clsx(
+              className,
+              'p-3 dark:border dark:border-gray-600 rounded-md overflow-auto'
+            )}
             style={style}
           >
             {tokens.map((line, i) => (

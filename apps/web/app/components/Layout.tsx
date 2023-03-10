@@ -30,7 +30,7 @@ export default function Layout() {
   const fetcher = useFetcher();
 
   return (
-    <div className="font-sans dark:text-gray-200 mx-auto sm:px-10 py-4 px-4 max-w-4xl">
+    <div className="font-sans z-10 relative text-gray-900 dark:text-gray-200 mx-auto sm:px-10 py-4 px-4 max-w-4xl">
       <header className="mb-4">
         <nav className="flex gap-2 justify-between items-center py-2">
           <ul className="flex items-center gap-3">
@@ -72,7 +72,9 @@ export default function Layout() {
         </nav>
       </header>
 
-      <Outlet />
+      <main className="mt-6">
+        <Outlet />
+      </main>
     </div>
   );
 }

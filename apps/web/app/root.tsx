@@ -89,12 +89,13 @@ export default function App() {
   const { theme, isBot } = useLoaderData<typeof loader>();
 
   return (
-    <html lang="en" data-theme={theme} className={`scroll-smooth ${theme}`}>
+    <html lang="en" data-theme={theme} className="scroll-smooth">
       <head>
         <Meta />
         <Links />
       </head>
-      <body className="from-indigo-50 dark:from-zinc-900 dark:to-gray-900 dark:via-gray-900 bg-gradient-to-br to-gray-200 min-h-screen via-white">
+      <body className={theme}>
+        <div className="from-indigo-50 dark:from-zinc-900 dark:to-gray-900 dark:via-gray-900 bg-gradient-to-br to-gray-200 min-h-screen via-white fixed left-0 top-0 h-full w-full" />
         <Layout />
         <Analytics />
         <ScrollRestoration />
