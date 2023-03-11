@@ -59,10 +59,7 @@ export class ApiService {
   }
 
   async getBlogs() {
-    const blogs = await BlogSchema.omit({ content: true })
-      .array()
-      .promise()
-      .parse(client.fetch(queries.getBlogsQuery));
+    const blogs = await this.getCachedBlogs();
 
     return blogs.map(blog => ({
       ...blog,
@@ -76,9 +73,7 @@ export class ApiService {
   }
 
   async getBlogBySlug(slug: string) {
-    const blog = await BlogSchema.promise().parse(
-      client.fetch(queries.getBlogBySlugQuery, { slug })
-    );
+    const blog = await this.getCachedBlogBySlug(slug);
 
     return {
       ...blog,
@@ -89,6 +84,39 @@ export class ApiService {
       }),
       readingTime: readingTime(blog.contentText).text
     };
+  }
+
+  private async getCachedBlogs() {
+    const cached = await this.kv.get('blogs', 'json');
+
+    if (cached) return BlogSchema.omit({ content: true }).array().parse(cached);
+
+    const blogs = await BlogSchema.omit({ content: true })
+      .array()
+      .promise()
+      .parse(client.fetch(queries.getBlogsQuery));
+
+    await this.kv.put('blogs', JSON.stringify(blogs), {
+      expirationTtl: 3600
+    });
+
+    return blogs;
+  }
+
+  private async getCachedBlogBySlug(slug: string) {
+    const cached = await this.kv.get(`blog-${slug}`, 'json');
+
+    if (cached) return BlogSchema.parse(cached);
+
+    const blog = await BlogSchema.promise().parse(
+      client.fetch(queries.getBlogBySlugQuery, { slug })
+    );
+
+    await this.kv.put(`blog-${slug}`, JSON.stringify(blog), {
+      expirationTtl: 60 * 60 * 24
+    });
+
+    return blog;
   }
 
   private async getCachedExperiences() {
