@@ -1,4 +1,4 @@
-import type { LoaderArgs } from '@remix-run/cloudflare';
+import type { LoaderArgs, MetaFunction } from '@remix-run/cloudflare';
 import type { SEOHandle } from '@balavishnuvj/remix-seo';
 import type { ShouldRevalidateFunction } from '@remix-run/react';
 import { jsonHash } from 'remix-utils';
@@ -20,6 +20,11 @@ export const loader = async ({ context, request, params }: LoaderArgs) => {
     { headers }
   );
 };
+
+export const meta: MetaFunction = () => ({
+  title: 'Blogs - Federico Minaya',
+  'og:title': 'Blogs - Federico Minaya'
+});
 
 export const handle: SEOHandle = {
   getSitemapEntries: () => [
