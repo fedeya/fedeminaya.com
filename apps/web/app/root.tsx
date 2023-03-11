@@ -10,7 +10,8 @@ import {
   Meta,
   Scripts,
   ScrollRestoration,
-  useLoaderData
+  useLoaderData,
+  useNavigation
 } from '@remix-run/react';
 import styles from '~/styles/tailwind.css';
 import appStyles from '~/styles/app.css';
@@ -18,6 +19,8 @@ import isbot from 'isbot';
 import Layout from './components/Layout';
 import { getTheme } from './lib/theme.server';
 import Analytics from './components/Analytics';
+import { useEffect } from 'react';
+import NProgress from 'nprogress';
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => ({
   charset: 'utf-8',
@@ -87,6 +90,12 @@ export const loader = async ({ request }: LoaderArgs) => {
 
 export default function App() {
   const { theme, isBot } = useLoaderData<typeof loader>();
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    if (navigation.state === 'idle') NProgress.done();
+    else NProgress.start();
+  }, [navigation.state]);
 
   return (
     <html lang="en" data-theme={theme} className="scroll-smooth">
