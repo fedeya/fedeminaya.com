@@ -1,4 +1,5 @@
 import type { FC } from 'react';
+import { Link } from '@remix-run/react';
 import { PortableText, type PortableTextComponents } from '@portabletext/react';
 
 import Highlight, { Prism } from 'prism-react-renderer';
@@ -26,7 +27,28 @@ const components: PortableTextComponents = {
       <span className="bg-gray-900 dark:bg-gray-700 dark:text-gray-300 font-mono rounded-md inline-block text-gray-100 px-1 text-sm">
         {children}
       </span>
-    )
+    ),
+    em: ({ children }) => (
+      <span className="border-l-4 block px-2 border-gray-700">
+        <em>{children}</em>
+      </span>
+    ),
+    link: ({ children, value }) => {
+      const isExternal = !value.href.startsWith('/');
+
+      const rel = isExternal ? 'noreferrer noopener' : undefined;
+
+      return (
+        <Link
+          to={value.href}
+          rel={rel}
+          target={isExternal ? '_blank' : undefined}
+          className="text-blue-600 hover:underline dark:text-blue-500"
+        >
+          {children}
+        </Link>
+      );
+    }
   },
   types: {
     code: ({ value }) => (
