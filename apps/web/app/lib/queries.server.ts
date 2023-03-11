@@ -41,10 +41,10 @@ export const getOssProjectsQuery = groq`
 export const getBlogsQuery = groq`
   *[_type == "blog"] | order(_createdAt desc) {
     _id,
-    title,
+    'title': coalesce(title[$lang], title.en, title.es),
     'slug': slug.current,
     "createdAt": _createdAt,
-    'contentText': pt::text(content)
+    'contentText': pt::text(coalesce(content[$lang], content.en, content.es))
   }
 `;
 
@@ -52,9 +52,9 @@ export const getBlogBySlugQuery = groq`
   *[_type == "blog" && slug.current == $slug][0] {
     "createdAt": _createdAt,
     _id,
-    title,
+    'title': coalesce(title[$lang], title.en, title.es),
     'slug': slug.current,
-    content,
-    'contentText': pt::text(content)
+    'content': coalesce(content[$lang], content.en, content.es),
+    'contentText': pt::text(coalesce(content[$lang], content.en, content.es))
   }
 `;

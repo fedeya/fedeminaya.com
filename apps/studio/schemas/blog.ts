@@ -8,7 +8,7 @@ export default defineType({
     {
       name: 'title',
       title: 'Title',
-      type: 'string',
+      type: 'localeString',
     },
     {
       name: 'slug',
@@ -22,16 +22,19 @@ export default defineType({
 
     {
       name: 'content',
-      type: 'array',
+      type: 'localeBlock',
       title: 'Content',
-      of: [
-        {
-          type: 'block',
-        },
-        {
-          type: 'code',
-        },
-      ],
     },
   ],
+
+  preview: {
+    select: {
+      title: 'title.en',
+    },
+    prepare({title}) {
+      return {
+        title,
+      }
+    },
+  },
 })

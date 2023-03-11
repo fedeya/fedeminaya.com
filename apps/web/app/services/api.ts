@@ -7,6 +7,7 @@ import {
 import { client } from '~/lib/sanity';
 import * as queries from '~/lib/queries.server';
 import readingTime from 'reading-time';
+import type { Locale } from '~/lib/locale';
 
 export class ApiService {
   constructor(private kv: KVNamespace) {}
@@ -58,8 +59,8 @@ export class ApiService {
     return oss;
   }
 
-  async getBlogs() {
-    const blogs = await this.getCachedBlogs();
+  async getBlogs(locale: Locale) {
+    const blogs = await this.getCachedBlogs(locale);
 
     return blogs.map(blog => ({
       ...blog,
@@ -72,8 +73,8 @@ export class ApiService {
     }));
   }
 
-  async getBlogBySlug(slug: string) {
-    const blog = await this.getCachedBlogBySlug(slug);
+  async getBlogBySlug(slug: string, locale: Locale) {
+    const blog = await this.getCachedBlogBySlug(slug, locale);
 
     return {
       ...blog,
@@ -86,15 +87,15 @@ export class ApiService {
     };
   }
 
-  private async getCachedBlogs() {
-    const cached = await this.kv.get('blogs', 'json');
+  private async getCachedBlogs(locale: Locale) {
+    const cached = await this.kv.get(`blogs-${locale}`, 'json');
 
     if (cached) return BlogSchema.omit({ content: true }).array().parse(cached);
 
     const blogs = await BlogSchema.omit({ content: true })
       .array()
       .promise()
-      .parse(client.fetch(queries.getBlogsQuery));
+      .parse(client.fetch(queries.getBlogsQuery, { lang: locale }));
 
     await this.kv.put('blogs', JSON.stringify(blogs), {
       expirationTtl: 3600
@@ -103,13 +104,13 @@ export class ApiService {
     return blogs;
   }
 
-  private async getCachedBlogBySlug(slug: string) {
-    const cached = await this.kv.get(`blog-${slug}`, 'json');
+  private async getCachedBlogBySlug(slug: string, locale: Locale) {
+    const cached = await this.kv.get(`blog-${locale}-${slug}`, 'json');
 
     if (cached) return BlogSchema.parse(cached);
 
     const blog = await BlogSchema.promise().parse(
-      client.fetch(queries.getBlogBySlugQuery, { slug })
+      client.fetch(queries.getBlogBySlugQuery, { slug, lang: locale })
     );
 
     await this.kv.put(`blog-${slug}`, JSON.stringify(blog), {

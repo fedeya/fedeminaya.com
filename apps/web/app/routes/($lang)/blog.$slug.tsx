@@ -1,24 +1,31 @@
 import type { LoaderArgs, MetaFunction } from '@remix-run/cloudflare';
+import type { ShouldRevalidateFunction } from '@remix-run/react';
 import { useLoaderData } from '@remix-run/react';
 import { jsonHash } from 'remix-utils';
 
 import type { SEOHandle } from '@balavishnuvj/remix-seo';
 import { client } from '~/lib/sanity';
-import { getBlogsQuery } from '~/lib/queries.server';
 import { BlogSchema } from '~/lib/schemas';
 import BlogContent from '~/components/BlogContent';
+import { getLocale, locales } from '~/lib/locale';
 
-export const loader = async ({ params, context }: LoaderArgs) => {
+export const loader = async ({ params, context, request }: LoaderArgs) => {
   const headers = new Headers({
     'Cache-control': 'max-age=10, s-maxage=10, stale-while-revalidate'
   });
 
+  const locale = getLocale(request, params.lang);
+
   return jsonHash(
     {
-      blog: context.services.api.getBlogBySlug(params.slug!)
+      blog: context.services.api.getBlogBySlug(params.slug!, locale)
     },
     { headers }
   );
+};
+
+export const shouldRevalidate: ShouldRevalidateFunction = data => {
+  return data.nextParams?.lang !== data.currentParams?.lang;
 };
 
 export const handle: SEOHandle = {
@@ -26,16 +33,25 @@ export const handle: SEOHandle = {
     const blogs = await BlogSchema.pick({ slug: true })
       .array()
       .promise()
-      .parse(client.fetch(getBlogsQuery));
+      .parse(client.fetch(`*[_type == 'blog'] { 'slug': slug.current } `));
 
-    return blogs.map(blog => ({
-      route: `/blog/${blog.slug}`,
-      priority: 0.7
-    }));
+    const localizedEntries = locales
+      .map(locale =>
+        blogs.map(blog => ({
+          route: `/${locale}/blog/${blog.slug}`,
+          priority: 0.7 as const
+        }))
+      )
+      .flat();
+
+    return localizedEntries.concat(
+      blogs.map(blog => ({
+        route: `/blog/${blog.slug}`,
+        priority: 0.7
+      }))
+    );
   }
 };
-
-export const shouldRevalidate = () => false;
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => ({
   title: `${data.blog.title} - Federico Minaya`,

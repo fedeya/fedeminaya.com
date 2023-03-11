@@ -69,6 +69,7 @@ importers:
       react-wrap-balancer: ^0.4.0
       reading-time: ^1.5.0
       remix-utils: ^6.0.0
+      resolve-accept-language: ^1.1.45
       tailwindcss: ^3.2.1
       typescript: ^4.7.4
       wrangler: ^2.12.0
@@ -93,6 +94,7 @@ importers:
       react-wrap-balancer: 0.4.0_react@18.2.0
       reading-time: 1.5.0
       remix-utils: 6.0.0_ac7zq3swg5246l7hfxbwz36xsm
+      resolve-accept-language: 1.1.45
       zod: 3.21.4
     devDependencies:
       '@cloudflare/workers-types': 3.19.0
@@ -9115,6 +9117,11 @@ packages:
 
   /requires-port/1.0.0:
     resolution: {integrity: sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==}
+    dev: false
+
+  /resolve-accept-language/1.1.45:
+    resolution: {integrity: sha512-8tW08Bv60HzjC70CBJwqGsHD4poU9NBSsyEB1j8/crSdBjA7Zt4A/xUhFW2nn8wvkSz8bLw9cY/qRQbcvCHYrQ==}
+    engines: {node: ^14.18.1 || >=16.0.0}
     dev: false
 
   /resolve-alpn/1.2.1:
