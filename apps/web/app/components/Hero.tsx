@@ -1,5 +1,4 @@
 import { FaGithub, FaLinkedin, FaTwitter } from 'react-icons/fa';
-import * as Fathom from 'fathom-client';
 
 export default function Hero() {
   return (
@@ -20,7 +19,6 @@ export default function Hero() {
       <div className="text-xl flex-wrap flex gap-1 sm:gap-4 xs:gap-3">
         <a
           aria-label="Linkedin"
-          onClick={() => Fathom.trackGoal('JLONNTPW', 0)}
           href="https://linkedin.com/in/federico-minaya"
           target="_blank"
           className="border-stone-500 dark:hover:bg-gray-800 dark:border-gray-500 flex hover:bg-gray-100 transition ease-in items-center gap-2 border py-2 px-3 shadow rounded-md"
@@ -33,7 +31,6 @@ export default function Hero() {
 
         <a
           aria-label="Twitter"
-          onClick={() => Fathom.trackGoal('DAPWUSNM', 0)}
           href="https://twitter.com/fedeminaya"
           target="_blank"
           className="border-stone-500 dark:border-gray-500 dark:hover:bg-gray-800 flex hover:bg-gray-100 transition ease-in items-center gap-2 border py-2 px-3 shadow rounded-md"
@@ -46,7 +43,6 @@ export default function Hero() {
 
         <a
           aria-label="Github"
-          onClick={() => Fathom.trackGoal('OFQD0Z7N', 0)}
           href="https://github.com/fedeya"
           target="_blank"
           className="border-stone-500 dark:border-gray-500 flex hover:bg-gray-100 dark:hover:bg-gray-800 transition ease-in items-center gap-2 border py-2 px-3 shadow rounded-md"
