@@ -70,6 +70,7 @@ importers:
       react-icons: ^4.6.0
       react-wrap-balancer: ^0.4.0
       reading-time: ^1.5.0
+      remix-sitemap: ^1.0.3
       remix-utils: ^6.0.0
       resolve-accept-language: ^1.1.45
       tailwindcss: ^3.2.1
@@ -96,6 +97,7 @@ importers:
       react-icons: 4.8.0_react@18.2.0
       react-wrap-balancer: 0.4.0_react@18.2.0
       reading-time: 1.5.0
+      remix-sitemap: 1.0.3
       remix-utils: 6.0.0_ac7zq3swg5246l7hfxbwz36xsm
       resolve-accept-language: 1.1.45
       zod: 3.21.4
@@ -9092,6 +9094,14 @@ packages:
       unified: 10.1.2
     dev: true
 
+  /remix-sitemap/1.0.3:
+    resolution: {integrity: sha512-s9eGr8Lhq7avaNfzMn6S9sydougyc4AfkK34iVFttu+du57v1pBz48sjSCIWhXglJ+KqoMD8waATWS4poZ7oEw==}
+    peerDependencies:
+      '@remix-run/server-runtime': ^1.14.1
+    dependencies:
+      ufo: 1.1.1
+    dev: false
+
   /remix-utils/6.0.0_ac7zq3swg5246l7hfxbwz36xsm:
     resolution: {integrity: sha512-S7Xec0YHZxGFEDawWpIbU7HQAZC0j51FmAvcCyBRuxjo71aAIMdmez47dgF8T91yxpHV1xlIKPL7LhBzmYsOZw==}
     engines: {node: '>=14'}
@@ -10220,7 +10230,6 @@ packages:
 
   /ufo/1.1.1:
     resolution: {integrity: sha512-MvlCc4GHrmZdAllBc0iUDowff36Q9Ndw/UzqmEKyrfSzokTd9ZCy1i+IIk5hrYKkjoYVQyNbrw7/F8XJ2rEwTg==}
-    dev: true
 
   /unbox-primitive/1.0.2:
     resolution: {integrity: sha512-61pPlCD9h51VoreyJ0BReideM3MDKMKnh6+V9L08331ipq6Q8OFXZYiqP6n/tbHx4s5I9uRhcye6BrbkizkBDw==}

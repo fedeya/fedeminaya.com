@@ -3,11 +3,11 @@ import type { ShouldRevalidateFunction } from '@remix-run/react';
 import { useLoaderData } from '@remix-run/react';
 import { jsonHash } from 'remix-utils';
 
-import type { SEOHandle } from '@balavishnuvj/remix-seo';
 import { client } from '~/lib/sanity';
 import { BlogSchema } from '~/lib/schemas';
 import BlogContent from '~/components/BlogContent';
-import { getLocale, locales } from '~/lib/locale';
+import { getLocale } from '~/lib/locale';
+import type { SitemapHandle } from 'remix-sitemap';
 
 export const loader = async ({ params, context, request }: LoaderArgs) => {
   const headers = new Headers({
@@ -28,28 +28,19 @@ export const shouldRevalidate: ShouldRevalidateFunction = data => {
   return data.nextParams?.lang !== data.currentParams?.lang;
 };
 
-export const handle: SEOHandle = {
-  async getSitemapEntries() {
-    const blogs = await BlogSchema.pick({ slug: true })
-      .array()
-      .promise()
-      .parse(client.fetch(`*[_type == 'blog'] { 'slug': slug.current } `));
+export const handle: SitemapHandle = {
+  sitemap: {
+    async generateEntries() {
+      const blogs = await BlogSchema.pick({ slug: true })
+        .array()
+        .promise()
+        .parse(client.fetch(`*[_type == 'blog'] { 'slug': slug.current } `));
 
-    const localizedEntries = locales
-      .map(locale =>
-        blogs.map(blog => ({
-          route: `/${locale}/blog/${blog.slug}`,
-          priority: 0.7 as const
-        }))
-      )
-      .flat();
-
-    return localizedEntries.concat(
-      blogs.map(blog => ({
+      return blogs.map(blog => ({
         route: `/blog/${blog.slug}`,
         priority: 0.7
-      }))
-    );
+      }));
+    }
   }
 };
 

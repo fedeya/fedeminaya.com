@@ -1,9 +1,8 @@
 import type { LoaderArgs, MetaFunction } from '@remix-run/cloudflare';
-import type { SEOHandle } from '@balavishnuvj/remix-seo';
 import type { ShouldRevalidateFunction } from '@remix-run/react';
 import { jsonHash } from 'remix-utils';
 import { useLoaderData } from '@remix-run/react';
-import { getLocale, locales } from '~/lib/locale';
+import { getLocale } from '~/lib/locale';
 import LocaleLink from '~/components/LocaleLink';
 
 export const loader = async ({ context, request, params }: LoaderArgs) => {
@@ -25,19 +24,6 @@ export const meta: MetaFunction = () => ({
   title: 'Blogs - Federico Minaya',
   'og:title': 'Blogs - Federico Minaya'
 });
-
-export const handle: SEOHandle = {
-  getSitemapEntries: () => [
-    ...locales.map(locale => ({
-      route: `/${locale}/blog`,
-      priority: 0.7 as const
-    })),
-    {
-      route: '/blog',
-      priority: 0.7
-    }
-  ]
-};
 
 export const shouldRevalidate: ShouldRevalidateFunction = data => {
   return data.nextParams?.lang !== data.currentParams?.lang;

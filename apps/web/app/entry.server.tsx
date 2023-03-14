@@ -2,7 +2,7 @@ import { renderToReadableStream } from 'react-dom/server';
 import { RemixServer } from '@remix-run/react';
 import type { EntryContext } from '@remix-run/cloudflare'; // or cloudflare/deno
 import isbot from 'isbot';
-import { otherRootRouteHandlers } from './utils/otherRootRoutes.server';
+import { isSitemapUrl, sitemap } from '~/lib/sitemap.server';
 
 export default async function handleRequest(
   request: Request,
@@ -10,12 +10,9 @@ export default async function handleRequest(
   responseHeaders: Headers,
   remixContext: EntryContext
 ) {
-  let didError = false;
+  if (isSitemapUrl(request)) return sitemap(request, remixContext);
 
-  for (const handler of otherRootRouteHandlers) {
-    const otherRouteResponse = await handler(request, remixContext);
-    if (otherRouteResponse) return otherRouteResponse;
-  }
+  let didError = false;
 
   const stream = await renderToReadableStream(
     <RemixServer context={remixContext} url={request.url} />,
