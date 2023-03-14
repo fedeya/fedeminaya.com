@@ -37,8 +37,18 @@ export const handle: SitemapHandle = {
         .parse(client.fetch(`*[_type == 'blog'] { 'slug': slug.current } `));
 
       return blogs.map(blog => ({
-        route: `/blog/${blog.slug}`,
-        priority: 0.7
+        loc: `/blog/${blog.slug}`,
+        priority: 0.7,
+        alternateRefs: [
+          {
+            href: `https://fedeminaya.com/en`,
+            hreflang: 'en'
+          },
+          {
+            href: `https://fedeminaya.com/es`,
+            hreflang: 'es'
+          }
+        ]
       }));
     }
   }

@@ -1,16 +1,9 @@
 import type { LoaderArgs } from '@remix-run/cloudflare';
-import type { SitemapHandle } from 'remix-sitemap';
 import { Outlet, useLoaderData, useLocation } from '@remix-run/react';
 import { Link } from '@remix-run/react';
 import { jsonHash } from 'remix-utils';
-import { getLocale, defaultLocale, locales } from '~/lib/locale';
+import { getLocale, defaultLocale } from '~/lib/locale';
 import { redirect } from '@remix-run/cloudflare';
-
-export const handle: SitemapHandle = {
-  sitemap: {
-    values: locales
-  }
-};
 
 export const loader = ({ request, params }: LoaderArgs) => {
   const locale = getLocale(request, params.lang);

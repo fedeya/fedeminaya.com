@@ -70,7 +70,7 @@ importers:
       react-icons: ^4.6.0
       react-wrap-balancer: ^0.4.0
       reading-time: ^1.5.0
-      remix-sitemap: 1.0.5
+      remix-sitemap: 1.1.0
       remix-utils: ^6.0.0
       resolve-accept-language: ^1.1.45
       tailwindcss: ^3.2.1
@@ -97,7 +97,7 @@ importers:
       react-icons: 4.8.0_react@18.2.0
       react-wrap-balancer: 0.4.0_react@18.2.0
       reading-time: 1.5.0
-      remix-sitemap: 1.0.5
+      remix-sitemap: 1.1.0
       remix-utils: 6.0.0_ac7zq3swg5246l7hfxbwz36xsm
       resolve-accept-language: 1.1.45
       zod: 3.21.4
@@ -9094,8 +9094,8 @@ packages:
       unified: 10.1.2
     dev: true
 
-  /remix-sitemap/1.0.5:
-    resolution: {integrity: sha512-SXk9si9R/AQXAN3qA+SJBEMzAka+eo7B/94woOb0njFF5ocVZKCXPeRW22dOi3TJPyAaCdStxu/Uax6mTk3uqg==}
+  /remix-sitemap/1.1.0:
+    resolution: {integrity: sha512-FHA2BxYFwvgSxwOZbD1yr1Oi8oNIj1iarCYZhwqad/gAeT6eL4uiTAImGtEyrs/ie2TPMwGLU/N5DC9juZCrqg==}
     peerDependencies:
       '@remix-run/server-runtime': ^1.14.1
     dependencies:

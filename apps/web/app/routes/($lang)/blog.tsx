@@ -1,5 +1,6 @@
 import type { LoaderArgs, MetaFunction } from '@remix-run/cloudflare';
 import type { ShouldRevalidateFunction } from '@remix-run/react';
+import type { SitemapHandle } from 'remix-sitemap';
 import { jsonHash } from 'remix-utils';
 import { useLoaderData } from '@remix-run/react';
 import { getLocale } from '~/lib/locale';
@@ -18,6 +19,28 @@ export const loader = async ({ context, request, params }: LoaderArgs) => {
     },
     { headers }
   );
+};
+
+export const handle: SitemapHandle = {
+  sitemap: {
+    async generateEntries() {
+      return [
+        {
+          loc: '/blog',
+          alternateRefs: [
+            {
+              href: `https://fedeminaya.com/en`,
+              hreflang: 'en'
+            },
+            {
+              href: `https://fedeminaya.com/es`,
+              hreflang: 'es'
+            }
+          ]
+        }
+      ];
+    }
+  }
 };
 
 export const meta: MetaFunction = () => ({
