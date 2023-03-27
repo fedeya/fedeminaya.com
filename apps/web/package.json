@@ -17,7 +17,6 @@
     "wrangler": "wrangler pages dev ./public --kv content"
   },
   "dependencies": {
-    "@balavishnuvj/remix-seo": "^1.0.2",
     "@portabletext/react": "^2.0.2",
     "@remix-run/cloudflare": "^1.14.0",
     "@remix-run/cloudflare-pages": "^1.14.0",

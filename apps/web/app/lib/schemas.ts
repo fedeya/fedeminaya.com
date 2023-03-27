@@ -61,3 +61,11 @@ export const BlogSchema = z.object({
 });
 
 export type Blog = z.infer<typeof BlogSchema>;
+
+export const ContactSchema = z.object({
+  name: z.string(),
+  email: z.string(),
+  message: z.string()
+});
+
+export type Contact = z.infer<typeof ContactSchema>;

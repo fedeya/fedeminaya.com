@@ -1,6 +1,7 @@
 import type { LoaderArgs, MetaFunction } from '@remix-run/cloudflare';
 import { jsonHash } from 'remix-utils';
 import AboutSection from '~/components/AboutSection';
+import ContactSection from '~/components/ContactSection';
 import Hero from '~/components/Hero';
 import OSSSection from '~/components/OSSSection';
 
@@ -36,6 +37,8 @@ export default function Index() {
       <AboutSection />
 
       <OSSSection />
+
+      <ContactSection />
     </>
   );
 }
