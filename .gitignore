@@ -7,3 +7,5 @@ apps/web/public/build
 .env
 apps/web/app/styles/tailwind.css
 .turbo
+apps/web/public/robots.txt
+apps/web/public/sitemap.xml

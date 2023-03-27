@@ -2,7 +2,6 @@ import { renderToReadableStream } from 'react-dom/server';
 import { RemixServer } from '@remix-run/react';
 import type { EntryContext } from '@remix-run/cloudflare'; // or cloudflare/deno
 import isbot from 'isbot';
-import { isSitemapUrl, sitemap } from '~/lib/sitemap.server';
 
 export default async function handleRequest(
   request: Request,
@@ -10,8 +9,6 @@ export default async function handleRequest(
   responseHeaders: Headers,
   remixContext: EntryContext
 ) {
-  if (isSitemapUrl(request)) return sitemap(request, remixContext);
-
   let didError = false;
 
   const stream = await renderToReadableStream(
