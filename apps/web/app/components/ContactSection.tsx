@@ -1,6 +1,7 @@
 import { useFetcher } from '@remix-run/react';
 import clsx from 'clsx';
 import { useEffect, useRef, useState } from 'react';
+import Balancer from 'react-wrap-balancer';
 import type { action } from '~/routes/contact';
 
 type Status = 'idle' | 'success' | 'error';
@@ -32,7 +33,17 @@ export default function ContactSection() {
       </div>
 
       <p className="my-4 text-lg">
-        If you have any questions or want to work with me, feel free to contact
+        <Balancer>
+          If you have any questions or want to work with me, feel free to
+          contact me sending a mail to{' '}
+          <a
+            href="mailto:hello@fedeminaya.com"
+            className="underline font-medium"
+          >
+            hello@fedeminaya.com
+          </a>{' '}
+          or filling the form below.
+        </Balancer>
       </p>
 
       <fetcher.Form ref={formRef} action="/contact" method="post">
