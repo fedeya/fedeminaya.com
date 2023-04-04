@@ -1,5 +1,6 @@
 /** @type {import('remix-sitemap').Config} */
 module.exports = {
   siteUrl: 'https://fedeminaya.com',
-  generateRobotsTxt: true
+  generateRobotsTxt: true,
+  format: true
 };

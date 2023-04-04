@@ -1,5 +1,6 @@
 import type { LoaderArgs, MetaFunction } from '@remix-run/cloudflare';
 import type { ShouldRevalidateFunction } from '@remix-run/react';
+import type { SitemapFunction } from 'remix-sitemap';
 import { useLoaderData } from '@remix-run/react';
 import { jsonHash } from 'remix-utils';
 
@@ -7,7 +8,6 @@ import { client } from '~/lib/sanity';
 import { BlogSchema } from '~/lib/schemas';
 import BlogContent from '~/components/BlogContent';
 import { getLocale } from '~/lib/locale';
-import type { SitemapHandle } from 'remix-sitemap';
 
 export const loader = async ({ params, context, request }: LoaderArgs) => {
   const headers = new Headers({
@@ -28,30 +28,26 @@ export const shouldRevalidate: ShouldRevalidateFunction = data => {
   return data.nextParams?.lang !== data.currentParams?.lang;
 };
 
-export const handle: SitemapHandle = {
-  sitemap: {
-    async generateEntries() {
-      const blogs = await BlogSchema.pick({ slug: true })
-        .array()
-        .promise()
-        .parse(client.fetch(`*[_type == 'blog'] { 'slug': slug.current } `));
+export const sitemap: SitemapFunction = async () => {
+  const blogs = await BlogSchema.pick({ slug: true })
+    .array()
+    .promise()
+    .parse(client.fetch(`*[_type == 'blog'] { 'slug': slug.current } `));
 
-      return blogs.map(blog => ({
-        loc: `/blog/${blog.slug}`,
-        priority: 0.7,
-        alternateRefs: [
-          {
-            href: `https://fedeminaya.com/en`,
-            hreflang: 'en'
-          },
-          {
-            href: `https://fedeminaya.com/es`,
-            hreflang: 'es'
-          }
-        ]
-      }));
-    }
-  }
+  return blogs.map(blog => ({
+    loc: `/blog/${blog.slug}`,
+    priority: 0.7,
+    alternateRefs: [
+      {
+        href: `https://fedeminaya.com/en`,
+        hreflang: 'en'
+      },
+      {
+        href: `https://fedeminaya.com/es`,
+        hreflang: 'es'
+      }
+    ]
+  }));
 };
 
 export const meta: MetaFunction<typeof loader> = ({ data }) => ({
