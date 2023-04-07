@@ -10,6 +10,7 @@
     "target": "ES2019",
     "strict": true,
     "allowJs": true,
+    "module": "esnext",
     "forceConsistentCasingInFileNames": true,
     "baseUrl": ".",
     "paths": {
