@@ -1,7 +1,8 @@
+import { useEffect } from 'react';
 import type {
   LinksFunction,
   LoaderArgs,
-  MetaFunction
+  V2_MetaFunction
 } from '@remix-run/cloudflare';
 import { json } from '@remix-run/cloudflare';
 import {
@@ -19,30 +20,66 @@ import isbot from 'isbot';
 import Layout from './components/Layout';
 import { getTheme } from './lib/theme.server';
 import Analytics from './components/Analytics';
-import { useEffect } from 'react';
 import NProgress from 'nprogress';
 
-export const meta: MetaFunction<typeof loader> = ({ data }) => ({
-  charset: 'utf-8',
-  title: 'Federico Minaya',
-  keywords: 'federico, minaya, fedeminaya, developer, web, full stack, fedeya',
-  'theme-color': data.theme === 'dark' ? '#18181b' : '#e5e7eb',
-  description:
-    'Federico Minaya is a full stack developer with a passion for building web applications.',
-  'og:type': 'website',
-  'X-UA-Compatible': 'IE=edge,chrome=1',
-  'og:site_name': 'Federico Minaya',
-  'og:title': 'Federico Minaya',
-  'og:image:type': 'image/jpg',
-  'og:image:width': '1200',
-  'og:image:height': '630',
-  'og:description':
-    'Federico Minaya is a full stack developer with a passion for building web applications.',
-  'twitter:card': 'summary_large_image',
-  'twitter:site': '@fedeminaya',
-  'twitter:creator': '@fedeminaya',
-  viewport: 'width=device-width,initial-scale=1'
+NProgress.configure({
+  showSpinner: false
 });
+
+export const meta: V2_MetaFunction<typeof loader> = ({ data }) => [
+  {
+    charset: 'utf-8'
+  },
+  {
+    title: 'Federico Minaya'
+  },
+  {
+    name: 'X-UA-Compatible',
+    content: 'IE=edge,chrome=1'
+  },
+  {
+    name: 'viewport',
+    content: 'width=device-width,initial-scale=1'
+  },
+  {
+    name: 'theme-color',
+    content: data.theme === 'dark' ? '#18181b' : '#e5e7eb'
+  },
+  {
+    property: 'og:type',
+    content: 'website'
+  },
+  {
+    property: 'og:title',
+    content: 'Federico Minaya'
+  },
+  {
+    property: 'og:site_name',
+    content: 'Federico Minaya'
+  },
+  {
+    name: 'description',
+    content:
+      'Federico Minaya is a full stack developer with a passion for building web applications.'
+  },
+  {
+    property: 'og:description',
+    content:
+      'Federico Minaya is a full stack developer with a passion for building web applications.'
+  },
+  {
+    name: 'twitter:card',
+    content: 'summary_large_image'
+  },
+  {
+    name: 'twitter:site',
+    content: '@fedeminaya'
+  },
+  {
+    name: 'twitter:creator',
+    content: '@fedeminaya'
+  }
+];
 
 export const links: LinksFunction = () => [
   {

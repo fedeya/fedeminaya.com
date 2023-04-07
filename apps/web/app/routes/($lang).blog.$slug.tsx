@@ -1,4 +1,4 @@
-import type { LoaderArgs, MetaFunction } from '@remix-run/cloudflare';
+import type { LoaderArgs } from '@remix-run/cloudflare';
 import type { ShouldRevalidateFunction } from '@remix-run/react';
 import type { SitemapFunction } from 'remix-sitemap';
 import { useLoaderData } from '@remix-run/react';
@@ -8,6 +8,7 @@ import { client } from '~/lib/sanity';
 import { BlogSchema } from '~/lib/schemas';
 import BlogContent from '~/components/BlogContent';
 import { getLocale } from '~/lib/locale';
+import { mergeMeta } from '~/utils/merge-meta';
 
 export const loader = async ({ params, context, request }: LoaderArgs) => {
   const headers = new Headers({
@@ -50,10 +51,15 @@ export const sitemap: SitemapFunction = async () => {
   }));
 };
 
-export const meta: MetaFunction<typeof loader> = ({ data }) => ({
-  title: `${data.blog.title} - Federico Minaya`,
-  'og:title': `${data.blog.title} - Federico Minaya`
-});
+export const meta = mergeMeta<typeof loader>(({ data }) => [
+  {
+    title: data.blog.title
+  },
+  {
+    property: 'og:title',
+    content: data.blog.title
+  }
+]);
 
 export default function BlogPage() {
   const { blog } = useLoaderData<typeof loader>();

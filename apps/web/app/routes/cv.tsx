@@ -1,18 +1,38 @@
-import type { LoaderArgs, MetaFunction } from '@remix-run/cloudflare';
+import type { LoaderArgs } from '@remix-run/cloudflare';
 import { jsonHash } from 'remix-utils';
 import ExperienceSection from '~/components/ExperienceSection';
 import SkillsSection from '~/components/SkillsSection';
+import { mergeMeta } from '~/utils/merge-meta';
 
-export const meta: MetaFunction = () => ({
-  title: 'CV - Federico Minaya',
-  keywords:
-    'federico, minaya, fedeminaya, developer, web, full stack, cv, curriculum, skills, experience, fedeya',
-  description: 'Skills and experience of Federico Minaya',
-  'og:title': 'CV - Federico Minaya',
-  'og:description': 'Skills and experience of Federico Minaya',
-  'og:image:alt': 'CV',
-  'og:image:url': 'https://fedeminaya.com/images/og-knowledge.jpg'
-});
+export const meta = mergeMeta(
+  () => [
+    {
+      title: 'CV - Federico Minaya'
+    },
+    {
+      name: 'description',
+      content: 'Skills and experience of Federico Minaya'
+    },
+    {
+      property: 'og:title',
+      content: 'CV - Federico Minaya'
+    },
+    {
+      property: 'og:description',
+      content: 'Skills and experience of Federico Minaya'
+    }
+  ],
+  () => [
+    {
+      property: 'og:image:url',
+      content: 'https://fedeminaya.com/images/og-knowledge.jpg'
+    },
+    {
+      property: 'og:image:alt',
+      content: 'CV'
+    }
+  ]
+);
 
 export const loader = async ({ context }: LoaderArgs) => {
   const headers = new Headers();

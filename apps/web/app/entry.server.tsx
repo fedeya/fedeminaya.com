@@ -9,20 +9,18 @@ export default async function handleRequest(
   responseHeaders: Headers,
   remixContext: EntryContext
 ) {
-  let didError = false;
-
-  const stream = await renderToReadableStream(
+  const body = await renderToReadableStream(
     <RemixServer context={remixContext} url={request.url} />,
     {
-      onError() {
-        didError = true;
+      signal: request.signal,
+      onError(error) {
+        console.log(error);
+        responseStatusCode = 500;
       }
     }
   );
 
-  if (isbot(request.headers.get('user-agent') ?? '')) {
-    await stream.allReady;
-  }
+  if (isbot(request.headers.get('user-agent'))) await body.allReady;
 
   const { staticHandlerContext } = remixContext;
 
@@ -39,8 +37,8 @@ export default async function handleRequest(
 
   responseHeaders.set('Content-Type', 'text/html');
 
-  return new Response(stream, {
+  return new Response(body, {
     headers: responseHeaders,
-    status: didError ? 500 : responseStatusCode
+    status: responseStatusCode
   });
 }

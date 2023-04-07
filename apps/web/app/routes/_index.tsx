@@ -1,9 +1,10 @@
-import type { LoaderArgs, MetaFunction } from '@remix-run/cloudflare';
+import type { LoaderArgs } from '@remix-run/cloudflare';
 import { jsonHash } from 'remix-utils';
 import AboutSection from '~/components/AboutSection';
 import ContactSection from '~/components/ContactSection';
 import Hero from '~/components/Hero';
 import OSSSection from '~/components/OSSSection';
+import { mergeMeta } from '~/utils/merge-meta';
 
 export const loader = ({ context }: LoaderArgs) => {
   const headers = new Headers();
@@ -21,11 +22,19 @@ export const loader = ({ context }: LoaderArgs) => {
   );
 };
 
-export const meta: MetaFunction = () => ({
-  'og:image:url': 'https://fedeminaya.com/images/og-home.jpg',
-  keywords: 'federico, minaya, fedeminaya, developer, web, full stack, home',
-  'og:image:alt': 'Home'
-});
+export const meta = mergeMeta(
+  () => [{ title: 'Federico Minaya' }],
+  () => [
+    {
+      property: 'og:image:url',
+      content: 'https://fedeminaya.com/images/og-home.jpg'
+    },
+    {
+      property: 'og:image:alt',
+      content: 'Home'
+    }
+  ]
+);
 
 export const shouldRevalidate = () => false;
 

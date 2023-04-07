@@ -11,8 +11,6 @@ const handleRequest = createPagesFunctionHandler({
   build,
   mode: process.env.NODE_ENV,
   getLoadContext(context): AppLoadContext {
-    console.log(context.env);
-
     const env = envSchema.parse(context.env);
 
     const services = {

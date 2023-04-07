@@ -1,10 +1,11 @@
-import type { LoaderArgs, MetaFunction } from '@remix-run/cloudflare';
+import type { LoaderArgs } from '@remix-run/cloudflare';
 import type { ShouldRevalidateFunction } from '@remix-run/react';
 import type { SitemapFunction } from 'remix-sitemap';
 import { jsonHash } from 'remix-utils';
 import { useLoaderData } from '@remix-run/react';
 import { getLocale } from '~/lib/locale';
 import LocaleLink from '~/components/LocaleLink';
+import { mergeMeta } from '~/utils/merge-meta';
 
 export const loader = async ({ context, request, params }: LoaderArgs) => {
   const headers = new Headers({
@@ -36,10 +37,15 @@ export const sitemap: SitemapFunction = () => {
   };
 };
 
-export const meta: MetaFunction = () => ({
-  title: 'Blogs - Federico Minaya',
-  'og:title': 'Blogs - Federico Minaya'
-});
+export const meta = mergeMeta(() => [
+  {
+    title: 'Blogs - Federico Minaya'
+  },
+  {
+    property: 'og:title',
+    content: 'Blogs - Federico Minaya'
+  }
+]);
 
 export const shouldRevalidate: ShouldRevalidateFunction = data => {
   return data.nextParams?.lang !== data.currentParams?.lang;
