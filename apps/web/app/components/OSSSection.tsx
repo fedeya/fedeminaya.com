@@ -1,6 +1,6 @@
 import { Link, useLoaderData } from '@remix-run/react';
 import { FaHeart } from 'react-icons/fa';
-import type { loader } from '~/routes';
+import type { loader } from '~/routes/_index';
 import OSSProjectCard from './OSSProjectCard';
 
 export default function OSSSection() {
