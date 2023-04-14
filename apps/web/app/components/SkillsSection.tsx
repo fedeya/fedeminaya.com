@@ -8,7 +8,7 @@ export default function SkillsSection() {
     <div className="pt-10">
       <h2 className="text-2xl font-semibold">Technical Skills</h2>
 
-      <div className="pt-2 flex flex-col gap-4">
+      <div className="pt-3 flex flex-col gap-4">
         {skillsCategories.map(category => (
           <div key={category._id}>
             <h3 className="text-lg font-semibold">{category.name}</h3>
