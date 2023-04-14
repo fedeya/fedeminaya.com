@@ -26,7 +26,7 @@ export default function ContactSection() {
   }, [fetcher.data]);
 
   return (
-    <div className="pt-8 mt-6 pb-10" id="contact">
+    <div className="pt-8 mt-6" id="contact">
       <div className="flex gap-1 items-center">
         <span className="text-2xl">~</span>
         <h2 className="text-3xl font-semibold">Get in touch!</h2>

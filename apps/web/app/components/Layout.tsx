@@ -72,7 +72,7 @@ export default function Layout() {
         </nav>
       </header>
 
-      <main className="mt-6">
+      <main className="mt-6 pb-10">
         <Outlet />
       </main>
     </div>
