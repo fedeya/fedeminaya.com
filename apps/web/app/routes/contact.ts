@@ -7,15 +7,11 @@ export const action = async ({ request, context }: ActionArgs) => {
 
   const data = ContactSchema.parse(formData);
 
-  try {
-    await context.services.email.contact(data);
+  let ok = true;
 
-    return json({
-      ok: true
-    });
-  } catch {
-    return json({
-      ok: false
-    });
-  }
+  await context.services.email.contact(data).catch(() => {
+    ok = false;
+  });
+
+  return json({ ok });
 };
