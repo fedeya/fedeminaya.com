@@ -6,6 +6,7 @@ import { ApiService } from '~/services/api';
 import { EmailService } from '~/services/email';
 
 import { envSchema } from './env';
+import { createCacheFromKv, createFakeCache } from '~/lib/cache';
 
 const handleRequest = createPagesFunctionHandler({
   build,
@@ -13,8 +14,13 @@ const handleRequest = createPagesFunctionHandler({
   getLoadContext(context): AppLoadContext {
     const env = envSchema.parse(context.env);
 
+    const contentCache =
+      env.NODE_ENV === 'development'
+        ? createFakeCache()
+        : createCacheFromKv(context.env.content);
+
     const services = {
-      api: new ApiService(context.env.content),
+      api: new ApiService(contentCache),
       email: new EmailService(context.env)
     };
 

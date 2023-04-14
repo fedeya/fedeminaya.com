@@ -8,12 +8,13 @@ import { client } from '~/lib/sanity';
 import * as queries from '~/lib/queries.server';
 import readingTime from 'reading-time';
 import type { Locale } from '~/lib/locale';
+import type { Cache } from '~/lib/cache';
 
 export class ApiService {
-  constructor(private kv: KVNamespace) {}
+  constructor(private cache: Cache) {}
 
   async getSkillsCategories() {
-    const cached = await this.kv.get('skills', 'json');
+    const cached = await this.cache.get('skills');
 
     if (cached) return SkillCategorySchema.array().parse(cached);
 
@@ -21,7 +22,7 @@ export class ApiService {
       .promise()
       .parse(client.fetch(queries.getSkillCategories));
 
-    await this.kv.put('skills', JSON.stringify(skills), {
+    await this.cache.set('skills', JSON.stringify(skills), {
       expirationTtl: 60 * 60 * 24
     });
 
@@ -44,7 +45,7 @@ export class ApiService {
   }
 
   async getOssProjects() {
-    const cached = await this.kv.get('oss', 'json');
+    const cached = await this.cache.get('oss');
 
     if (cached) return OssProjectSchema.array().parse(cached);
 
@@ -52,7 +53,7 @@ export class ApiService {
       .promise()
       .parse(client.fetch(queries.getOssProjectsQuery));
 
-    await this.kv.put('oss', JSON.stringify(oss), {
+    await this.cache.set('oss', JSON.stringify(oss), {
       expirationTtl: 60 * 60 * 24
     });
 
@@ -90,7 +91,7 @@ export class ApiService {
   private async getCachedBlogs(locale: Locale) {
     const cacheKey = `blogs-${locale}`;
 
-    const cached = await this.kv.get(cacheKey, 'json');
+    const cached = await this.cache.get(cacheKey);
 
     if (cached) return BlogSchema.omit({ content: true }).array().parse(cached);
 
@@ -99,7 +100,7 @@ export class ApiService {
       .promise()
       .parse(client.fetch(queries.getBlogsQuery, { lang: locale }));
 
-    await this.kv.put(cacheKey, JSON.stringify(blogs), {
+    await this.cache.set(cacheKey, JSON.stringify(blogs), {
       expirationTtl: 3600
     });
 
@@ -109,7 +110,7 @@ export class ApiService {
   private async getCachedBlogBySlug(slug: string, locale: Locale) {
     const cacheKey = `blog-${locale}-${slug}`;
 
-    const cached = await this.kv.get(cacheKey, 'json');
+    const cached = await this.cache.get(cacheKey);
 
     if (cached) return BlogSchema.parse(cached);
 
@@ -117,7 +118,7 @@ export class ApiService {
       client.fetch(queries.getBlogBySlugQuery, { slug, lang: locale })
     );
 
-    await this.kv.put(cacheKey, JSON.stringify(blog), {
+    await this.cache.set(cacheKey, JSON.stringify(blog), {
       expirationTtl: 60 * 60 * 24
     });
 
@@ -125,7 +126,7 @@ export class ApiService {
   }
 
   private async getCachedExperiences() {
-    const cached = await this.kv.get('experiences', 'json');
+    const cached = await this.cache.get('experiences');
 
     if (cached) return ExperienceSchema.array().parse(cached);
 
@@ -133,7 +134,7 @@ export class ApiService {
       .promise()
       .parse(client.fetch(queries.getExperiences));
 
-    await this.kv.put('experiences', JSON.stringify(experiences), {
+    await this.cache.set('experiences', JSON.stringify(experiences), {
       expirationTtl: 60 * 60 * 24
     });
 
