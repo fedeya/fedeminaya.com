@@ -22,20 +22,18 @@ export const loader = async ({ context, request, params }: LoaderArgs) => {
   );
 };
 
-export const sitemap: SitemapFunction = () => {
-  return {
-    alternateRefs: [
-      {
-        href: `https://fedeminaya.com/en`,
-        hreflang: 'en'
-      },
-      {
-        href: `https://fedeminaya.com/es`,
-        hreflang: 'es'
-      }
-    ]
-  };
-};
+export const sitemap: SitemapFunction = () => ({
+  alternateRefs: [
+    {
+      href: `https://fedeminaya.com/en`,
+      hreflang: 'en'
+    },
+    {
+      href: `https://fedeminaya.com/es`,
+      hreflang: 'es'
+    }
+  ]
+});
 
 export const meta = mergeMeta(() => [
   {
