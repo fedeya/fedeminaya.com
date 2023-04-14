@@ -1,5 +1,11 @@
 import type { LoaderArgs } from '@remix-run/cloudflare';
-import { Outlet, useLoaderData, useLocation } from '@remix-run/react';
+import {
+  Outlet,
+  useLoaderData,
+  useLocation,
+  useRouteError,
+  isRouteErrorResponse
+} from '@remix-run/react';
 import { Link } from '@remix-run/react';
 import { jsonHash } from 'remix-utils';
 import { getLocale, defaultLocale } from '~/lib/locale';
@@ -40,4 +46,30 @@ export default function LangLayout() {
       </footer>
     </>
   );
+}
+
+export function ErrorBoundary() {
+  const error = useRouteError();
+
+  if (isRouteErrorResponse(error)) {
+    return (
+      <div className="flex items-center justify-center mt-20 flex-col gap-3">
+        <h1 className="text-7xl font-bold">{error.status}</h1>
+        <p className="text-xl font-medium">
+          {error.status === 404 && 'Sorry, Page'} {error.data}
+        </p>
+      </div>
+    );
+  }
+
+  if (error instanceof Error) {
+    return (
+      <div>
+        <h1>Something went wrong</h1>
+        <p>{error.message}</p>
+      </div>
+    );
+  }
+
+  return <h1>Unknown Error</h1>;
 }

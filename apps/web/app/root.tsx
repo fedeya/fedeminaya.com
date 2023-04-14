@@ -11,8 +11,10 @@ import {
   Meta,
   Scripts,
   ScrollRestoration,
+  isRouteErrorResponse,
   useLoaderData,
-  useNavigation
+  useNavigation,
+  useRouteError
 } from '@remix-run/react';
 import styles from '~/styles/tailwind.css';
 import appStyles from '~/styles/app.css';
