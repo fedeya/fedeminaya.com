@@ -1,5 +1,4 @@
 import type { LoaderArgs } from '@remix-run/cloudflare';
-import type { ShouldRevalidateFunction } from '@remix-run/react';
 import type { SitemapFunction } from 'remix-sitemap';
 import { useLoaderData } from '@remix-run/react';
 import { jsonHash } from 'remix-utils';
@@ -9,6 +8,7 @@ import { BlogSchema } from '~/lib/schemas';
 import BlogContent from '~/components/BlogContent';
 import { getLocale } from '~/lib/locale';
 import { mergeMeta } from '~/utils/merge-meta';
+import { revalidateOnLanguageChange } from '~/lib/revalidations';
 
 export const loader = async ({ params, context, request }: LoaderArgs) => {
   const headers = new Headers({
@@ -25,9 +25,7 @@ export const loader = async ({ params, context, request }: LoaderArgs) => {
   );
 };
 
-export const shouldRevalidate: ShouldRevalidateFunction = data => {
-  return data.nextParams?.lang !== data.currentParams?.lang;
-};
+export const shouldRevalidate = revalidateOnLanguageChange;
 
 export const sitemap: SitemapFunction = async () => {
   const blogs = await BlogSchema.pick({ slug: true })

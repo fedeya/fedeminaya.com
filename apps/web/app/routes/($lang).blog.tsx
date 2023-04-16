@@ -1,11 +1,11 @@
 import type { LoaderArgs } from '@remix-run/cloudflare';
-import type { ShouldRevalidateFunction } from '@remix-run/react';
 import type { SitemapFunction } from 'remix-sitemap';
 import { jsonHash } from 'remix-utils';
 import { useLoaderData } from '@remix-run/react';
 import { getLocale } from '~/lib/locale';
 import LocaleLink from '~/components/LocaleLink';
 import { mergeMeta } from '~/utils/merge-meta';
+import { revalidateOnLanguageChange } from '~/lib/revalidations';
 
 export const loader = async ({ context, request, params }: LoaderArgs) => {
   const headers = new Headers({
@@ -45,9 +45,7 @@ export const meta = mergeMeta(() => [
   }
 ]);
 
-export const shouldRevalidate: ShouldRevalidateFunction = data => {
-  return data.nextParams?.lang !== data.currentParams?.lang;
-};
+export const shouldRevalidate = revalidateOnLanguageChange;
 
 export default function BlogsPage() {
   const { blogs } = useLoaderData<typeof loader>();
