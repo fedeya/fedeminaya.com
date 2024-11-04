@@ -19,7 +19,6 @@ import appStyles from '~/styles/app.css';
 import isbot from 'isbot';
 import Layout from './components/Layout';
 import { getTheme } from './lib/theme.server';
-import Analytics from './components/Analytics';
 import NProgress from 'nprogress';
 
 NProgress.configure({
@@ -149,7 +148,6 @@ export default function App() {
       <body className={theme}>
         <div className="from-indigo-50 dark:from-zinc-900 dark:to-gray-900 dark:via-gray-900 bg-gradient-to-br to-gray-200 min-h-screen via-white fixed left-0 top-0 h-full w-full" />
         <Layout />
-        <Analytics />
         <ScrollRestoration />
         {!isBot && <Scripts />}
         <LiveReload />
