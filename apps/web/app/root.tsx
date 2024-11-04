@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import type {
   LinksFunction,
   LoaderArgs,
-  V2_MetaFunction
+  V2_MetaFunction,
 } from '@remix-run/cloudflare';
 import { json } from '@remix-run/cloudflare';
 import {
@@ -12,7 +12,7 @@ import {
   Scripts,
   ScrollRestoration,
   useLoaderData,
-  useNavigation
+  useNavigation,
 } from '@remix-run/react';
 import styles from '~/styles/tailwind.css';
 import appStyles from '~/styles/app.css';
@@ -23,62 +23,62 @@ import Analytics from './components/Analytics';
 import NProgress from 'nprogress';
 
 NProgress.configure({
-  showSpinner: false
+  showSpinner: false,
 });
 
 export const meta: V2_MetaFunction<typeof loader> = ({ data }) => [
   {
-    charset: 'utf-8'
+    charset: 'utf-8',
   },
   {
-    title: 'Federico Minaya'
+    title: 'Federico Minaya',
   },
   {
     name: 'X-UA-Compatible',
-    content: 'IE=edge,chrome=1'
+    content: 'IE=edge,chrome=1',
   },
   {
     name: 'viewport',
-    content: 'width=device-width,initial-scale=1'
+    content: 'width=device-width,initial-scale=1',
   },
   {
     name: 'theme-color',
-    content: data.theme === 'dark' ? '#18181b' : '#e5e7eb'
+    content: data.theme === 'dark' ? '#18181b' : '#e5e7eb',
   },
   {
     property: 'og:type',
-    content: 'website'
+    content: 'website',
   },
   {
     property: 'og:title',
-    content: 'Federico Minaya'
+    content: 'Federico Minaya',
   },
   {
     property: 'og:site_name',
-    content: 'Federico Minaya'
+    content: 'Federico Minaya',
   },
   {
     name: 'description',
     content:
-      'Federico Minaya is a full stack developer with a passion for building web applications.'
+      'Federico Minaya is a full stack developer with a passion for building web applications.',
   },
   {
     property: 'og:description',
     content:
-      'Federico Minaya is a full stack developer with a passion for building web applications.'
+      'Federico Minaya is a full stack developer with a passion for building web applications.',
   },
   {
     name: 'twitter:card',
-    content: 'summary_large_image'
+    content: 'summary_large_image',
   },
   {
     name: 'twitter:site',
-    content: '@fedeminaya'
+    content: '@fedeminaya',
   },
   {
     name: 'twitter:creator',
-    content: '@fedeminaya'
-  }
+    content: '@fedeminaya',
+  },
 ];
 
 export const links: LinksFunction = () => [
@@ -87,41 +87,41 @@ export const links: LinksFunction = () => [
     as: 'font',
     href: '/fonts/inter-v12-latin-regular.woff2',
     type: 'font/woff2',
-    crossOrigin: 'anonymous'
+    crossOrigin: 'anonymous',
   },
   {
     rel: 'preload',
     as: 'font',
     href: '/fonts/inter-v12-latin-500.woff2',
     type: 'font/woff2',
-    crossOrigin: 'anonymous'
+    crossOrigin: 'anonymous',
   },
   {
     rel: 'preload',
     as: 'font',
     href: '/fonts/inter-v12-latin-600.woff2',
     type: 'font/woff2',
-    crossOrigin: 'anonymous'
+    crossOrigin: 'anonymous',
   },
   {
     rel: 'icon',
     type: 'image/png',
-    href: '/favicon.png'
+    href: '/favicon.png',
   },
   {
     rel: 'stylesheet',
-    href: styles
+    href: styles,
   },
   {
     rel: 'stylesheet',
-    href: appStyles
-  }
+    href: appStyles,
+  },
 ];
 
 export const loader = async ({ request }: LoaderArgs) => {
   return json({
     theme: await getTheme(request.headers),
-    isBot: isbot(request.headers.get('User-Agent') ?? '')
+    isBot: isbot(request.headers.get('User-Agent') ?? ''),
   });
 };
 
@@ -139,6 +139,12 @@ export default function App() {
       <head>
         <Meta />
         <Links />
+
+        <script
+          defer
+          data-domain="fedeminaya.com"
+          src="http://plausible.fedeminaya.com/js/script.js"
+        ></script>
       </head>
       <body className={theme}>
         <div className="from-indigo-50 dark:from-zinc-900 dark:to-gray-900 dark:via-gray-900 bg-gradient-to-br to-gray-200 min-h-screen via-white fixed left-0 top-0 h-full w-full" />
