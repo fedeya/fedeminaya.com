@@ -37,6 +37,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://fedeminaya.com/about',
   },
+  openGraph: {
+    images: [
+      {
+        type: 'image/jpeg',
+        url: 'https://fedeminaya.com/og?page=About',
+      },
+    ],
+  },
 };
 
 export default function About() {

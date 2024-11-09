@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     images: [
       {
         type: 'image/jpeg',
-        url: 'https://fedeminaya.com/og-home.jpg',
+        url: 'https://fedeminaya.com/og',
       },
     ],
   },
