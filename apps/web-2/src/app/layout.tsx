@@ -13,11 +13,13 @@ import PlausibleProvider from 'next-plausible';
 //
 const jetBrainsMono = JetBrains_Mono({
   variable: '--font-jetbrains-mono',
+  subsets: ['latin'],
   weight: ['100', '300', '400', '500', '700'],
 });
 
 const inter = Inter({
   variable: '--font-inter',
+  subsets: ['latin'],
   weight: ['100', '300', '400', '500', '700'],
 });
 
