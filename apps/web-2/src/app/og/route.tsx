@@ -1,16 +1,18 @@
 import { ImageResponse } from 'next/og';
 
+export const runtime = 'edge';
+
 export const GET = async (req: Request) => {
   const url = new URL(req.url);
 
   const page = url.searchParams.get('page');
 
   const fontRegular = fetch(
-    new URL('../../assets/fonts/JetBrainsMono-Regular.ttf', import.meta.url)
+    new URL('../../assets/fonts/JetBrainsMonoNL-Regular.ttf', import.meta.url)
   ).then((res) => res.arrayBuffer());
 
   const fontBold = fetch(
-    new URL('../../assets/fonts/JetBrainsMono-Bold.ttf', import.meta.url)
+    new URL('../../assets/fonts/JetBrainsMonoNL-Bold.ttf', import.meta.url)
   ).then((res) => res.arrayBuffer());
 
   return new ImageResponse(
