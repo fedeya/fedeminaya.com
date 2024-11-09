@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import Link from 'next/link';
 import { FC } from 'react';
 
@@ -36,6 +37,12 @@ const Project: FC<ProjectProps> = ({ title, description, stats, url }) => {
       </ul>
     </div>
   );
+};
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: 'https://fedeminaya.com',
+  },
 };
 
 export default function Home() {

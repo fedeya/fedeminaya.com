@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import { FC } from 'react';
 
 type ExperienceProps = {
@@ -30,9 +31,12 @@ const Experience: FC<ExperienceProps> = ({
   );
 };
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'About me - Federico Minaya',
   description: 'Full Stack Developer based in Buenos Aires, Argentina',
+  alternates: {
+    canonical: 'https://fedeminaya.com/about',
+  },
 };
 
 export default function About() {
