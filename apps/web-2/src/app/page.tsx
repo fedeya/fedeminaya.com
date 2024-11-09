@@ -30,7 +30,7 @@ const Project: FC<ProjectProps> = ({ title, description, stats, url }) => {
 
       <ul className="list-disc px-4 mt-3 font-mono space-y-2">
         <li>
-          Used by{' '}
+          Used in{' '}
           <span className="font-medium">{stats.projects}+ projects</span>
         </li>
         <li className="font-medium">{stats.downloads}k+ Downloads</li>
