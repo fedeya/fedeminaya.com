@@ -1,7 +1,5 @@
 import { ImageResponse } from 'next/og';
 
-export const runtime = 'edge';
-
 export const GET = async (req: Request) => {
   const url = new URL(req.url);
 
