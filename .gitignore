@@ -10,3 +10,4 @@ apps/web/app/styles/tailwind.css
 apps/web/public/robots.txt
 apps/web/public/sitemap.xml
 .dev.vars
+.DS_Store

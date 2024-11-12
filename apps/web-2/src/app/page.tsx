@@ -129,7 +129,7 @@ export default function Home() {
             <a
               target="_blank"
               rel="noreferrer noopener"
-              href="https://ko-fi.com/fedeya"
+              href="https://www.buymeacoffee.com/fedeya"
               className="underline"
             >
               Consider buying me a coffee ☕️
