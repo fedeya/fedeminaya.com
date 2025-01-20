@@ -4,6 +4,7 @@ import { Inter, JetBrains_Mono } from 'next/font/google';
 import './globals.css';
 import Link from 'next/link';
 import PlausibleProvider from 'next-plausible';
+import { NavLink } from '@/components/nav-link';
 
 // const geistSans = localFont({
 //   src: './fonts/GeistVF.woff',
@@ -24,7 +25,10 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: 'Federico Minaya',
+  title: {
+    template: '%s | Federico Minaya',
+    default: 'Federico Minaya',
+  },
   description: 'Full Stack Developer',
   openGraph: {
     title: 'Federico Minaya',
@@ -69,7 +73,7 @@ export default function RootLayout({
       </head>
 
       <body
-        className={`${inter.variable} ${jetBrainsMono.variable} antialiased`}
+        className={`${inter.variable} ${jetBrainsMono.variable} font-inter`}
       >
         <header className="max-w-4xl py-8 mx-auto">
           <nav>
@@ -77,17 +81,17 @@ export default function RootLayout({
             {/*   FM */}
             {/* </Link> */}
 
-            <ul className="flex underline font-mono items-center justify-center gap-8">
+            <ul className="flex items-center justify-center gap-8">
               <li>
-                <Link href="/">Home</Link>
+                <NavLink href="/">Home</NavLink>
               </li>
 
               <li>
-                <Link href="/about">About</Link>
+                <NavLink href="/about">About</NavLink>
               </li>
 
               <li>
-                <Link href="/#projects">Projects</Link>
+                <NavLink href="/projects">Projects</NavLink>
               </li>
             </ul>
           </nav>

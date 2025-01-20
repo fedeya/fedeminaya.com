@@ -1,43 +1,6 @@
+import { DonateMessage } from '@/components/donate';
+import { OSSProject } from '@/components/oss-project';
 import { Metadata } from 'next';
-import Link from 'next/link';
-import { FC } from 'react';
-
-type ProjectProps = {
-  title: string;
-  description: string;
-  url: string;
-  stats: {
-    projects: number;
-    downloads: number;
-  };
-};
-
-const Project: FC<ProjectProps> = ({ title, description, stats, url }) => {
-  return (
-    <div className="border-gray-200 pt-4 pb-6 border-b">
-      <h4 className="text-lg underline text-purple-800 font-medium mb-2 font-mono">
-        <a
-          href={url}
-          rel="noreferrer noopenner"
-          className="px-2 -ml-2 py-1 hover:bg-gray-100 transition ease-in rounded-md"
-          target="_blank"
-        >
-          {title}
-        </a>
-      </h4>
-
-      <p>{description}</p>
-
-      <ul className="list-disc px-4 mt-3 font-mono space-y-2">
-        <li>
-          Used in{' '}
-          <span className="font-medium">{stats.projects}+ projects</span>
-        </li>
-        <li className="font-medium">{stats.downloads}k+ Downloads</li>
-      </ul>
-    </div>
-  );
-};
 
 export const metadata: Metadata = {
   alternates: {
@@ -102,21 +65,21 @@ export default function Home() {
 
         {/* <h3 className="text-xl font-semibold font-mono">Featured Projects</h3> */}
 
-        <Project
+        <OSSProject
           title="remix-sitemap"
           description="Sitemap generator for Remix applications"
           url="https://github.com/fedeya/remix-sitemap"
           stats={{ projects: 40, downloads: 50 }}
         />
 
-        <Project
+        <OSSProject
           title="next-sanity-client"
           description="Sanity Client for Next.js Apps with App Dir Support "
           url="https://github.com/fedeya/next-sanity-client"
           stats={{ projects: 200, downloads: 100 }}
         />
 
-        <Project
+        <OSSProject
           title="next-auth-sanity"
           description="NextAuth Adapter and Provider for Sanity"
           url="https://github.com/fedeya/next-auth-sanity"
@@ -124,17 +87,7 @@ export default function Home() {
         />
 
         <div className="mt-8">
-          <p className="font-medium">
-            One of my project was helpful?{' '}
-            <a
-              target="_blank"
-              rel="noreferrer noopener"
-              href="https://www.buymeacoffee.com/fedeya"
-              className="underline"
-            >
-              Consider buying me a coffee ☕️
-            </a>
-          </p>
+          <DonateMessage />
         </div>
       </section>
     </div>

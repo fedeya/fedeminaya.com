@@ -32,7 +32,7 @@ const Experience: FC<ExperienceProps> = ({
 };
 
 export const metadata: Metadata = {
-  title: 'About me - Federico Minaya',
+  title: 'About me',
   description: 'Full Stack Developer based in Buenos Aires, Argentina',
   alternates: {
     canonical: 'https://fedeminaya.com/about',
@@ -51,7 +51,7 @@ export default function About() {
   return (
     <div>
       <section id="about" className="space-y-6 border-b border-gray-200 pb-8">
-        <h2 className="text-2xl font-bold font-mono">About me</h2>
+        <h1 className="text-2xl font-bold font-mono">About me</h1>
 
         <p className="text-lg">
           I'm a Full Stack Developer passionate about building scalable
@@ -60,9 +60,9 @@ export default function About() {
           platforms to video streaming services.
         </p>
 
-        <h3 className="text-xl font-semibold font-mono">
+        <h2 className="text-xl font-semibold font-mono">
           My expertise lies in:
-        </h3>
+        </h2>
 
         <ul className="text-lg font-medium list-disc px-8">
           <li>Building performant web applications</li>
