@@ -14,10 +14,13 @@ const nextConfig: NextConfig = {
         destination: '/',
         permanent: false,
       },
+    ];
+  },
+  rewrites: async () => {
+    return [
       {
         source: '/cv',
-        destination: '/about',
-        permanent: false,
+        destination: '/cv.pdf',
       },
     ];
   },
