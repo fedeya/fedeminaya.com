@@ -50,7 +50,7 @@ export default function Home() {
           </a>
 
           <a
-            href="https://drive.google.com/file/d/1uLG-JK3sfj_H_Tv32oQf4mRLDC7Yeln8/view"
+            href="/cv"
             target="_blank"
             rel="noreferrer noopener"
             className="text-lg underline px-3 rounded-md py-1 hover:bg-gray-100 transition ease-in"
