@@ -1,3 +1,5 @@
+import { withPlausibleProxy } from 'next-plausible';
+
 import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
@@ -26,4 +28,6 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+export default withPlausibleProxy({
+  customDomain: 'https://plausible.fedeminaya.com',
+})(nextConfig);

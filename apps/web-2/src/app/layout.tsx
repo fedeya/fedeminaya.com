@@ -63,13 +63,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <PlausibleProvider
-          trackOutboundLinks
-          hash
-          customDomain="https://plausible.fedeminaya.com"
-          domain="fedeminaya.com"
-          selfHosted
-        />
+        <PlausibleProvider trackOutboundLinks hash domain="fedeminaya.com" />
       </head>
 
       <body
