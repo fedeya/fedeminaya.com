@@ -13,6 +13,7 @@ export default {
         geist: ['var(--font-geist-sans)', 'sans-serif'],
         inter: ['var(--font-inter)', 'sans-serif'],
         mono: ['var(--font-jetbrains-mono)', 'monospace'],
+        vt32: ['var(--font-vt32)'],
       },
       colors: {
         background: 'var(--background)',
