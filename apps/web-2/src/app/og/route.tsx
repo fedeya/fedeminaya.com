@@ -28,7 +28,7 @@ export const GET = async (req: Request) => {
           tw="flex flex-col"
         >
           <h2 tw="text-4xl mb-2 font-normal text-purple-800">
-            {page ?? 'Full Stack Developer'}
+            {page ?? 'Software Engineer'}
           </h2>
 
           <div tw="h-1 bg-purple-800"></div>

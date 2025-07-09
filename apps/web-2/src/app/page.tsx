@@ -17,7 +17,7 @@ export default function Home() {
         </h1>
 
         <p className="text-lg font-mono font-medium">
-          Full Stack Developer{' '}
+          Software Engineer at Profound{' '}
           <span className="text-gray-400">
             based in Buenos Aires, Argentina
           </span>

@@ -33,7 +33,7 @@ const Experience: FC<ExperienceProps> = ({
 
 export const metadata: Metadata = {
   title: 'About me',
-  description: 'Full Stack Developer based in Buenos Aires, Argentina',
+  description: 'Software Engineer based in Buenos Aires, Argentina',
   alternates: {
     canonical: 'https://fedeminaya.com/about',
   },
@@ -54,10 +54,7 @@ export default function About() {
         <h1 className="text-2xl font-bold font-mono">About me</h1>
 
         <p className="text-lg">
-          I'm a Full Stack Developer passionate about building scalable
-          solutions that make a real impact. At Aerolab, I lead technical
-          initiatives for products serving millions of users, from fintech
-          platforms to video streaming services.
+          I'm a Software Engineer passionate about building scalable solutions that make a real impact. Currently, I'm working at Profound, where I help brands improve their positioning and visibility within AI chats.
         </p>
 
         <h2 className="text-xl font-semibold font-mono">
@@ -82,9 +79,19 @@ export default function About() {
 
         <div className="space-y-8">
           <Experience
+            company="Profound"
+            role="Software Engineer"
+            period="2025 - Present"
+          >
+            <p>
+              WIP
+            </p>
+          </Experience>
+
+          <Experience
             company="Aerolab"
-            role="Senior Full Stack Developer & Technical Lead"
-            period="2022 - Present"
+            role="Technical Lead"
+            period="2022 - 2025"
           >
             <ul className="list-disc space-y-2 px-4">
               <li>
@@ -130,7 +137,7 @@ export default function About() {
 
           <Experience
             company="Freelance"
-            role="Full Stack Developer"
+            role="Software Engineer"
             period="2010 - 2022"
           >
             <ul className="list-disc space-y-2 px-4">

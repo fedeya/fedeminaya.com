@@ -29,10 +29,10 @@ export const metadata: Metadata = {
     template: '%s | Federico Minaya',
     default: 'Federico Minaya',
   },
-  description: 'Full Stack Developer',
+  description: 'Software Engineer at Profound, based in Buenos Aires, Argentina',
   openGraph: {
     title: 'Federico Minaya',
-    description: 'Full Stack Developer',
+    description: 'Software Engineer at Profound, based in Buenos Aires, Argentina',
     type: 'website',
     images: [
       {
